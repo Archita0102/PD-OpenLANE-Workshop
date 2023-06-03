@@ -58,13 +58,15 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
   
  This workshop we will be trying to talk more about the industry begind the chip highlighted which is the processor
  
+ <p 
+  ![image](https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/a6806a98-28d5-487d-b11c-cd5f760ee250)
  
 
 
   Along with the processors there are many other interfaces on the board like FLASH , EEPROM’s , GND and VCC pins,etc. Below is a typical image of a board. We are more focused about the chip design
   
   <p align="center"> 
-     <img src="https://user-images.githubusercontent.com/120498080/214492904-1273ccaa-8c55-4fb5-9367-4b97f6a42b78.png"> 
+     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/a6806a98-28d5-487d-b11c-cd5f760ee250"> 
     
     A typical IC can be visualized as the image shown below 
     
