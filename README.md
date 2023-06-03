@@ -69,12 +69,12 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
    
      
   A typical IC can be visaulized as shown in the figure. 
-    <p align="center"> 
-     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/fa5069d5-a1c9-4f28-a305-d02545cf0a51"> 
+<p align="center"> 
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/fa5069d5-a1c9-4f28-a305-d02545cf0a51"> 
       
       
-    <p align="center"> 
-     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/429f301e-da75-42c8-ae45-69f5b2c95468"> 
+<p align="center"> 
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/429f301e-da75-42c8-ae45-69f5b2c95468"> 
       
      
    
@@ -88,79 +88,133 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
       
       Die: size of the entire chip THAT GETS MANUFACTURED ON THE SILICON WAFER
 
-       <p align="center"> 
-        <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/8b3b6139-2133-4ab8-a9aa-39bd9af9307d"> 
+<p align="center"> 
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/8b3b6139-2133-4ab8-a9aa-39bd9af9307d"> 
   
 
   
- - *Foundry IP's* refers to all intellectual property (IP), whether Background IP or Foreground IP, developed for genetic components, pathways, and strains as well as methods and tools for design, genetic engineering, testing, and/or small-scale fermentation of microbial strains, regardless of when or for what purpose. 
- - *Macro-cells* are substantial building pieces that might be thought of as "black boxes." These macro-cells logic and electronic activity are described, but the internal structure may or may not be known. 
- - We can understand that *Macros* are like pure digital logic whereas *IP's* dose the intelegent work. 
- - Wo communicate to foundries through some interface files(PDKs) provided be the foundries. 
+ - Typical core consists of SoC , SRAM , ADC,PLL, DAC, SPI. 
+ - All of the above are called as foundry IPs.  All device performances are dependent on the foundry. IP is the intelligence needed to build up the blocks. 
+ - Macros – SPI,SoC – it consists of pure digital logic.
   
- #### RISC-V Instruction Set Architecture(ISA) 
- Along with the introduction of RISC-V, other well-known architectures like ARM and x86 are discussed. This is necessary since the architecture on which we will be working is a picorv32a CPU core based on RISC-V processor. 
- - For example if a C program is to be run on the hardware of given layout then the given C program is first compiled in its assembly language program (here it is the RISC-V assembly level program). Then this assemble level program is converted to machine level program which is the binary level program which is understood by the hardware of the computer and finally the bits get executed in the particular layout. 
- - There is another interface which need to present between RISC-V Architecture and layout is the *HARDWARE DESCRIPTION LANGUAGE (HDL)*. This HDL basically describe the harware and understabd the machine code(binary input). We need to implement this RISC-V specification using some RTL. So this RTL implement the RISC-V Architecture specification using the standard RTL to GDS flow. 
- - So the entire flow starts from the RISC-V Architecture, it has been implemented using an RTL and then finally implemented in layout. 
   
-     <p align="center"> 
-     <img src="https://user-images.githubusercontent.com/120498080/214389623-05de9e7c-75a3-45c4-aef8-0c50a7c2bc95.png"> 
-  
- - The `.exe` file generated be the compiler contain the instruction whose syntax depend on the type of hardware we are using. This instruction set basically acts as an interface between the C level program and harware and this instruction set is called as *Instruction Set Architecture(ISA)* of the Architecture of the Computer(here a RISC-V Architecture). It is the language though which user speaks to the computer 
- - The assembler take this instructions and convert it into its respective machine language programe(binary language). 
- - We get the specifications of the instruction set and write a HDL of this instructions and synthesis it to gate level and then this is converted into its respective layout using the general RTL to GDSII flow. 
-  
- ### SoC design and openLANE 
- --- 
- The 3 important factors in Digital ASIC Design process are,  
- 1. *RTL Designs(Register Transfer Level) {*many RTL design is available in opensource like `librecores.org`,`openecores.org`,`github.com`} 
- 2. *EDA Tools(Electronic Design Automation) {*many EDA tools are available like spice simulator, sis, magic, etc but now a days Qflow, openROAD, openLANE are used} 
- 3. *PDKs Data*(Process Design Kits) {*Google + 130nm PDK is provided by skywater *} 
-  
- The openLANE is a OPENSOURCE platform 
-  
- ### ASIC Design Flow 
- The main objective of *ASIC Design Flow* is to take the design from RTL to GDSII tool which is the final format used for the final layouts. It as also called as *Automated PnR* or *Physical Implemantation* 
-  
- #### RTL to GDSII flow 
+ #### Introduction to RISC-V  
+ Instruction Set Architecture – It is the language of the computer the way we talk with the computer. 
  <p align="center"> 
-     <img src="https://user-images.githubusercontent.com/120498080/214480028-4e5a5326-4998-4a2f-9248-f3337c3c562d.png"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/1ade684d-a2dd-4792-88e5-cf107c23ae44">     
+         
+
+ - Left image is a C program. To make the C program run on a particular layout it is first complied into an assembly language program , in this case it is RISC-V assembly language program 
+ - This assembly language program is then converted into machine language program which is the binary language program consisting of 1s and 0s which is understood by hardware of the computer this is then executed in the layout and we get the required layout. 
+ - Another interface that needs to be between the RISC V architecture and layout is the hardware description language. 
+ - RTL implements the specifications of RISC-V architecture and from the RTL to layout is a standard RTL to GDSII flow. User only has to program in C other flow will be automatically done by the system
+   
+ #### From Software Applications to Hardware 
+  
+<p align="center"> 
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/0edc84e8-b0aa-4ec8-8d15-2175bb4da865"> 
+       
+     
+ - Application software enters into a block of system software and the system software converts the application program into binary language.
+ - The major components of system software are the operating system (OS) , the compiler and the assembler.
+ - OS(Operating system) : Handle IO operations , allocate memory and low level system functions. Alongwith it also converts the application into its respective assembly language or binary language program.
+ - The output of OS is C,C++ etc and then its complied and converted into instructions . The syntax of instructions depends upon the hardware language. Intructions language is into .exe.file.
+ - Assembler converts the instructions into binary/machine language program. This is further fed to the hardware. 
+ - Instructions act as an abstract interface between the C program and the hardware. This interface is the instruction set architecture.
+  
+ <p align="center"> 
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/cfdd404a-c934-4444-897c-23dbe700da8b">
+   
+ - To reach from the abstract interface to the hardware the another interface os the hardware description language to implement the specification of the instructions which is synthesized into a netlist in form of gates and then we have a physical design of the netlist. 
+   
+ <p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/d58a47c2-7d04-4dfb-9a82-f32c98301288">
+   
+ So the three main parts are:
+   1.	RISC –V Instruction Set architecture
+   2.	RTL and synthesis of RISC-V based CPU core picorv32a
+   3.	Physical design implementation of picorv32a
+
+
+ --- 
+ ### SoC Design and OpenLANE
+ --- 
+   
+ #### Introduction to all components of open source digital ASIC design
+   
+  
+ Designing digital ASIC requires several elements and all of them are to be present always
+   
+ <p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/73e31598-8ccd-488d-b035-518785df9c50">
+   
+  
+
+   
+ 1. *RTL Designs(Register Transfer Level):* There are many open source RTL designs present some of them are librecores.org , opencores.org , github.com. 
+ 2. *EDA Tools(Electronic Design Automation):* Spicesimulatot, sis ,magic . Nowadays we have academic tools like Qflow , OpenROAD, OpenLANE. 
+ 3. *PDKs Data*(Process Design Kits):* It is a collection of files used to model a fabrication process for EDA tools to design an IC. Skywater 130 nm + Google pdk is opensource PDK.
+   
+ <p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/36d0a908-dba8-4d41-a254-b29ee252377f">
+   
+ 
+#### Simplified RTL to GDSII flow
+  
+ The main objective of ASIC design is to take the design from RTL to GDSII
+   
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/bdce5052-f645-4cab-9042-29b017caf8de">
+  
+ 
   
  1.*Synthesis* 
- - Designed RTL is transilated into a circuit made out of components from SCL(Standard Cell Library). The resulatant curcuit is described in HDL and usually refered to as a gate level netlist. The gate level netlist is functionally equivalent to the RTL. 
- - The Standard Cells have regular layouts. Cell layouts are enclosed by fixed height rectangle and cell width is variable, its an integer multiple of the units called the site width. 
- - Each cells comes under differnet models/views utilized by different EDA tools like - Libraty View(includes electrical modles for cells such as delay and power modles), HDL View of the Cells,SPICE View of the Cells,Layout View of the Cells(GDSII view which is the detailed view and Delev view which is the abstract view) 
+ - The RTL design is converted into a circuit out of components from the standard cell library.
+ - Result is the gate level netlist that is functional equivalent to an RTL.  
+ - Standard cells have a fixed regular layout of fixed height and variable width. 
+ - Each cells have different models  Libraty View(includes electrical modles for cells such as delay and power modles), HDL View of the Cells,SPICE View of the Cells,Layout View of the Cells(GDSII view which is the detailed view and Delev view which is the abstract view)
   
  2.*Floor and Power Planning* 
- - The objective here is the plan the silicon area and create the robous power distribution network to power the circuits. 
- - In Chip Floor-Planning the chip die is partition between different system building blocks and place the I/O Pads. 
- - In Macro Floor-Planning we define the micro dimensions and its pin locations and rows definitions. 
- - In power planning the power network is constructed using horizontal and vertical parallel metal straps(parallel structures are ment to reduce resistance and to address electromagnetic radiation problem) 
+ - Here the objective is to plan the silicon area and create robust power distribution. 
+   1. Chip floor planning: Chip die is position between different chip positions.
+   2. Macro floor planning: Defining the micro dimensions and its pin locations. Also the row definition
+ 
+ - In power planning the power network is constructed typically a chip is powered by multiple Vdd , and power pins. The power pins are connected to horizontal and vertical metal straps parallelly . Parallel connection reduces the resistance and to address electromagnetic radiation. Power distribution network uses upper metal layers as they are thicker to lower metal layers and hence have low resistance.
   
  3.*Placements* 
- - For macros we place the gate level netlist cells on wafer rows. 
+ - Placing the gate level netlist on the vertical rows and must be placed close to eachother to reduce the interconnect delay and to enable successful routing . 
  - Cell placements are done 2 steps:  
-    + *Global Placement* (Global Placement tries to find the optimal positions for all the cells, such positions are not necessarly leagel, so cells may overlap of go off rows). 
-    + *Detailed placements* (In Detailed Placement the positions obtained from global placements are minimally altered to be leagel). 
+   1.	Global placement: Global placement have to find optimum positions that may not be legal and hence cells may overlap on eachother.
+   2. Detailed placement: The positions obtained here from global placement are minimally altered to be legal.
   
  4.*Clock Tree Synthesis (CTS)* 
- - It is the clock distribution network to deliver the clock to all sequential elements with minimum skew(the arrival of the clock at different component at differnet time) and minimum latency. The clock network looks like a tree where the clock source are the roots and the clock elements are the entities. 
+ - Creating a clock distribution network before routing. Delivering clock to all sequential elements . 
+ - Clock network is like tree where clock source is root and clock elements entity. Minimum skew and minimum latency . 
+ - Skew means arrival of clock at different components at different times.
   
  5.*Routing* 
- - After routing the clock comes signal routing. In given placement and fixed number of metal layers is require to find a valid pattern of horizontal and veritical wires to implement the nets that connects the cells together. The router uses the available metal layers as directed be the pdk, for each metal layer the pdk define the thickness, the pitch, the tracks and the minimum width. It also defines the wires that can be used to put nets, wire segments on different metal layers together. 
- - The skywater pdk defines extra routing layers, the lowest layer is called the local interconnect layer(its titenum nitride layer) and the following five layer on the local interconnect layer are all aluminum layers. 
- - Most of the routers are the grid routers, they construct the routing grids out of metal layer tracks. As the routing grids is hudge it use divide and conquer aproach is used for routing.  
-    + First *Global Routing* is performed to generate the routing guids,  
-    + then *Detail Routing* uses the fine grid and the routing guides to implement the actual wiring. 
+ - In given placement and fixed number of metal layers is require to find a valid pattern of horizontal and veritical wires to implement the nets that connects the cells together. 
+ - The router uses the metal layers as defined by the pdk . pdk defines the thickness,pitch , track and minimum width.
+ - The skywater pdk defines 6 routing layers. Thw lowest one is called local interconnect layer which is titanium nitride layer.The following five are aluminium layers. 
+ - Most of the routers are grid routers they construct the routing grid out of the metal layer track . As the roouting layer is huge we go for divide and conquer approach.
+    1. Global Routing: generates routing grids
+    2. Detailed routing:Uses routing grids to implement actual wiring
   
  5.*Sign-off* 
- - Here we construct the final layout which undergo verification, which includes  
- *Physical Verification*  
-     + *Design Rule Checking(DRC)* where we make sure that the final layout follows all design rules. 
-     + *Layout vs Schematic(LVS)* which make sure that the final layout matches the gate level netlist then we started with  
- *Timing Verification*  
-     + *Static Time Analysis(STA)* to make sure that all timing constrains are met and circiut will run at designated clock frequency. 
+ - Now we can construct a final layout after routing which undergoes  
+     1.Physical verifications:
+        a. 	Design Rules checking: It makes sure the final layout undergoes all design rules. 
+        b.  Layout vs Schematic: Makes sure that final layout matches the gate level netlist.
+     2.Timing Verifications:
+        a.  Static Timing analysis: makes sure that all timing constraints are met at a designated clock frequency.
+
   
- #### Introduction to OpenLANE 
- For Open Source ASIC Flow we need to ba aware about the following in Open Source EDA
+ #### Introduction to OpenLANE and strive objects 
+ Using OenSOURCE tools the problem is tougher. We need to take care about
+  a.	Tools Qualification
+  b.	Tools Calibaration
+  c.	Missing tools
+
+OPENLANE is OpenSOURCE and free and can be used for our purpose. Openlane is started as a Open Source flow for a true Open Source tape out experiment 
+Efabless has a family of SoCs striVe where there is openpdk,openeda,openrtl.
+
