@@ -52,12 +52,16 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
  ### How to talk to computers 
  --- 
  #### Introduction to QFN-48 package , cjip , pads,core,dir and IPs  
+ 
+ ![image](https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/a6806a98-28d5-487d-b11c-cd5f760ee250)
+
   
  This workshop we will be trying to talk more about the industry begind the chip highlighted which is the processor
  
  
  <p align="center"> 
      ![image](https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/73242877-3e8c-41a4-bf6c-0c99df7c021b)
+     ![Uploading image.png…]()
 
 
   Along with the processors there are many other interfaces on the board like FLASH , EEPROM’s , GND and VCC pins,etc. Below is a typical image of a board. We are more focused about the chip design
