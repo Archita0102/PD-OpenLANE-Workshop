@@ -4,7 +4,7 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
 ## Table of Contents 
   
  * [Day 1: Inception of open-source EDA, OpenLANE and Sky130 PDK](#day-1) 
-     + [Talking to Computers](#talking-to-computers) 
+     + [How to talk to computers](#how-to-talk-to-computers) 
      + [SoC Design and OpenLANE](#soc-design-and-openlane) 
      + [ASIC Design Flow](#ASIC-Design-Flow) 
      + [Getting Familiar to EDA tools](#getting-familiar-to-eda-tools) 
@@ -49,13 +49,20 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
  ## Inception of open-source EDA, OpenLANE and Sky130 PDK 
   
  --- 
- ### Talking to Computers 
+ ### How to talk to computers 
  --- 
- Introduced to the internal structure of a computer using an example of a RISC-V processor.  
+ #### Introduction to QFN-48 package , cjip , pads,core,dir and IPs  
   
+ This workshop we will be trying to talk more about the industry begind the chip highlighted which is the processor
  <p align="center"> 
      <img src="https://user-images.githubusercontent.com/120498080/214492904-1273ccaa-8c55-4fb5-9367-4b97f6a42b78.png"> 
+  ![image](https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/b2df64ec-e10c-4940-b0c3-fcfff8c09e47)
+
+  Along with the processors there are many other interfaces on the board like FLASH , EEPROM’s , GND and VCC pins,etc. Below is a typical image of a board. We are more focused about the chip design
   
+  <p align="center"> 
+     <img src="https://user-images.githubusercontent.com/120498080/214492904-1273ccaa-8c55-4fb5-9367-4b97f6a42b78.png"> 
+    
  - The exposed area of metal on a circuit board known as a *Pad* is where the component lead is soldered. Pads are used to send the signal inside the chip. 
  - A *Core* is a compact processor or CPU placed into a bigger processor or CPU socket. It is capable of handling all computing operations on its own. All the digital logic of the chip are placed in Core. 
  - The square of silicon that has been sliced off the wafer and contains an integrated circuit on the silicon wafer is called to as a *Die*. 
