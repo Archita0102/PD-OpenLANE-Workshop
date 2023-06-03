@@ -63,16 +63,35 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
   <p align="center"> 
      <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/a6806a98-28d5-487d-b11c-cd5f760ee250"> 
     
-    A typical IC can be visualized as the image shown below 
-   
-     <p align="center"> 
-     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/285ef270-2faf-43aa-a115-623c658baf08"> 
- - The exposed area of metal on a circuit board known as a *Pad* is where the component lead is soldered. Pads are used to send the signal inside the chip. 
- - A *Core* is a compact processor or CPU placed into a bigger processor or CPU socket. It is capable of handling all computing operations on its own. All the digital logic of the chip are placed in Core. 
- - The square of silicon that has been sliced off the wafer and contains an integrated circuit on the silicon wafer is called to as a *Die*. 
+ 
+    
   
- <p align="center"> 
-     <img src="https://user-images.githubusercontent.com/120498080/214492926-4321ab2c-5583-4c7d-9189-f7f1d4f447af.png"> 
+   
+     
+  A typical IC can be visaulized as shown in the figure. 
+    <p align="center"> 
+     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/fa5069d5-a1c9-4f28-a305-d02545cf0a51"> 
+      
+      
+    <p align="center"> 
+     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/429f301e-da75-42c8-ae45-69f5b2c95468"> 
+      
+     
+   
+ - The internal structure of the IC looks like shown in figure 1. This is package QFN-48. 
+ - Chip is in the centre of the package and is connected to the other pins via wirebonds. This is how signal is tranferred from outside to the internal of the chip.
+ - Figure 3 shows the chip internal circuit consisting of various components.
+      
+      Pads: send signal inside the chip
+      
+      Core: digital logic is placed here
+      
+      Die: size of the entire chip THAT GETS MANUFACTURED ON THE SILICON WAFER
+
+       <p align="center"> 
+        <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/8b3b6139-2133-4ab8-a9aa-39bd9af9307d"> 
+  
+
   
  - *Foundry IP's* refers to all intellectual property (IP), whether Background IP or Foreground IP, developed for genetic components, pathways, and strains as well as methods and tools for design, genetic engineering, testing, and/or small-scale fermentation of microbial strains, regardless of when or for what purpose. 
  - *Macro-cells* are substantial building pieces that might be thought of as "black boxes." These macro-cells logic and electronic activity are described, but the internal structure may or may not be known. 
