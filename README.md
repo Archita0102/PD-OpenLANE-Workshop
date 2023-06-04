@@ -1068,23 +1068,208 @@ All parameters related to the technology node are described here.
 
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/da93bc9f-88ac-4a74-a643-baa54c04262e">
--When poly crosses n diffusion - NMOS and when poly crosses p diffusion -PMOS
--
+-When poly crosses n diffusion - NMOS and when poly crosses p diffusion -PMOS. On layout you can verify by sending a command on tkcon window.
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/e39a704d-25f1-48d8-a8c4-dfa3ac7d0b96">
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/68999377-1581-461c-91b9-b4b06c0529ae">
+
+- Check if drain of PMOS and NMOS are connected. For this press s twice on the layout window.
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/4933d089-cd4d-4ed4-96d9-e0a69b1ebfa6">
+	
+Similarly other connections can also be checked.
 	
 	
 	
+#### Create standard cell layout and extract spice netlist
+
+- We have to take care of the DRC rules been validates. Checking out the metal layers.
+- To extract the layout on spice , open the tkcon folder to get the location of our design.
+- To create extraction file, commands in the tkcon window are as folows:
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/f96128aa-66e0-449e-971e-0590095fae46">
+- Check if the file is obtained inside the vsdstdcelldesign folder.
+- Use the ext file to create a spice file to be used in the ngspice tool.
+- Type following commands in terminal . the **cthresh 0 rthresh 0 extract** all parasitic capacitors.
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/b3aed3a4-2f45-453b-8dac-268ac78d39df">	
+- Spice file is created
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/b5eb4b13-857a-4cda-8971-cf3ea806e3c2">
+
+
 	
+#### Steps to create final Spice deck using Sky130 tech
+- We need to check the dimensions.
+- It should be the grid value specified in the layout.
+- Dimensions of the box is:
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/bb45cfe7-d170-4fd5-8849-61bcae1080b7">
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/1293ce75-538a-47f0-b275-fe1eb4c10d6b">
+
+#### Steps to characterize inverter using Sky140 model files
+
+- To display the values taken by the ngspice 
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/faf6f030-d72d-407c-82d1-3c809e8b0175">
+
+- To plot: plotting output vs time sweping the input
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/cd0c20dd-7d53-46de-bb1d-15f288bff0ab">	
+
+- To zoom into a particular region in graph just make use of right ,ouse button and a box will be formes.
+Rise Time [output transition time from 20%(0.66V) to 80%(2.64V)]:
+Rise Time = 2.25013ns - 2.18412ns = 0.06601ns ns
+
+Fall Time [ouput transition time from 80%(2.64V) to 20%(0.66V)]:
+Fall Time = 4.09365ns - 4.05066ns = 0.04299 ns	
 	
+Rise Delay [delay between 50%(1.65V) of input to 50%(1.65V) of output]:
+Rise Delay = 2.21566ns- 2.15181ns = 0.02554 ns
 	
+Fall Delay [delay between 50%(1.65V) of input to 50%(1.65V) of output]:
+Fall Delay = 4.07574ns- 4.05016ns = 0.06385 ns
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/77b0e0a6-2a84-4337-8700-3681f5738af6">
+- The characterization done above was done at 27°C.
+- We have characterized our inverter. Next objective is to create a .lef file using the layout to be used in openlane and plug the cell into picorv32a code.
 	
-	
-	
-	
-	
-   ## Day 4: 
- ## Pre layout timing analysis and importance of good clock tree
+ ## Day 4:
+## Pre-layout timing analysis and importance of good clock tree
   
  --- 
  ### Timing modelling using delay tables
  --- 
- #### Spice deck creation for CMOS inverter
+ #### Introduction to Delay tables
+
+Problem:
+
+- The capacitance or the load at the output node of each and every buffer in the complete clock tree is varying.
+- If the load is varying the input transition is varying.
+- There will be variety of delays.
+- To avoid large skew between endpoints of a clock tree (happening due to signal arrives at different point in time):
+
+After splitting the buffers.
+Buffers on the same level must have same capacitive load to ensure same timing delay or latency on the same level. It means that each buffer at the same level is having same load.
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/a23f5c01-5da4-4f1c-ac84-e93acef9fb5">
+Solution was to bring *Delay tables*
+- 2D table 
+- With varying input transistons and output load the delay table was characterized .
+- The timing model of each cell is recorded and is summarised in delay tables, which are part of the liberty file. The output slew is the main cause of delay.
+
+#### Delay tables usage
+
+
+  --- 
+ ### LAB : Timing modelling using delay tables
+ --- 
+ #### Convert grid info to track info
+
+- We dont require information of power , ground in place and route.
+- We just require the inner library and i/p , o/p port.
+- This is where /lef file comes into picture . .lef consists of this info. It potects our IP/micro.
+- Extracting .lef file from .mag file and plug into picorv32 flow.
+	- Make sure the input and output port lie on intersection of vertical and horizontal track.
+	- Width of standard cell must be odd multiple of the track pitch.
+- Go into the tracks.info of the pdk folder
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/5bd317bb-5cad-4c95-864a-cd8588593efc">
+- Tracks are used during the routing step. Routes can go over the tracks.
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/11cc822b-1be7-4b1e-a4c4-9ed97e31eb8a">
+- Routes are the metal traces . We have to decide where the routes will go which is given by the tracks.
+- Horizontal track li X 0.23(offset value) 0.46(pitch value). Each tracks are spaced 0.46 to eachother.
+- Similarly for the vertical track. This is there for every metal layer.
+- Ports are on the li metal layer.
+- Will converge the grid with the track value to verify if the ports are on the intersection of horizontal and vertical track.
+- Set the grid parameters according to the track dimensions.
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/d4f70757-d7c1-4fb4-be3e-169789244e9e">	
+- Routing of li layer can happen with the help of those grids.
+- The input and output ports are along the horizontal and vertical intersection
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/cd8f5bfe-2856-41ab-ac89-9f8306b7a1f9">
+
+ #### Convert magic layout to cell .lef
+	
+- Width and height are odd multiple of track(x/y) pitch
+For eg: width 
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/50861e29-e027-4e2a-9891-8a34325ab09e">
+- In layout there are no ports. Port defination are required only for extracting the .lef files. Ports are defined as pins of the .mag file.
+- Give the cell a custom name by 
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/cf851aa7-8c61-4fc0-96c8-a06f54ca9ccf">
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/522d2d9e-d5be-45c6-8ef9-533294c74191">
+
+- Extraction of .lef file
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/6b7e964e-83dc-4246-a935-bfc5480473bd">
+- Port enable checkbox creates a pin in .lef file
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/511256ca-e87d-4204-91ed-b11e94a31cfc">
+
+#### Introduction to timing libs and steps to include new cell in synthesis
+
+- Move all the files in src folder of design picorv32a.
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/79693c53-9fd9-4c9f-b3a6-aca585f589f3">
+
+- We have to ensure the abc flow maps the netlist to the library.
+- There are 3 lib files.
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/ec604473-3f01-46ab-8ccd-4b7139e6d7e0">
+	- Typical lib file (tt)
+	- Slow lib file (ss)
+	- Fast lib file (ff)
+	Defined for different temperature and different voltage values. We will require these libraries for STA analysis.
+- Copy the above libraries into src folder
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/5ed74f1b-84ed-4aae-85e8-8270b39a046f">
+
+- We need to modify the config.tcl inside designs folder.
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/f05cdcf9-504e-4020-ae05-ee8923645455">
+
+- Running the synthesis to check if we can plug the design
+- Overwrite will take the new values that we defined in config.tcl
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/ecf19161-e560-49f7-9494-951b8502a0e9">
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/ae882c7b-cdfa-4311-b480-34c9bcb8b806">
+run_synthesis
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/ae882c7b-cdfa-4311-b480-34c9bcb8b806">
+- There is huge slack violation at synthesis stage
+	
+#### Configure synthesis settings to fix slack and include vsdinv
+- There are huge delays observed. The report we get is from open STA.
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/eec879aa-e49e-4ee9-96e2-abe3209415a5">
+- wns has the worst slack.
+- Need to balance between delay and area.
+- Chip area : 147712.918400
+- Buffering - Buffering is for high fan out rates.Sizing and buffering is been enabled.If fanout is high it needs more driving strength.
+
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/a6928f31-52c4-4953-8a4c-d46396ab3914">
+
+
+
+
+
+
+
+	
