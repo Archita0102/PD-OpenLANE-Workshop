@@ -56,53 +56,55 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
  This workshop we will be trying to talk more about the industry behind the chip highlighted which is the processor
  
  <p align="center"> 
-      <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/19af55b9-20b9-4721-93ca-926707d80d58"> 
+      <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/b154a5a6-dc07-487c-884b-1156cc5c2ff7"> 
+	
+	
  
   Along with the processors there are many other interfaces on the board like FLASH , EEPROM’s , GND and VCC pins,etc. Below is a typical image of a board. We are more focused about the chip design
   
   <p align="center"> 
-     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/a6806a98-28d5-487d-b11c-cd5f760ee250"> 
-    
- 
-    
-  
-   
-     
+     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/0b3717b7-e2a1-4a86-907a-933b6e9148df"> 
+
+
   A typical IC can be visaulized as shown in the figure. 
 <p align="center"> 
-   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/fa5069d5-a1c9-4f28-a305-d02545cf0a51"> 
-      
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/d99594e1-4592-450d-b2a0-ecfb55d853a3"> 
+     
+
       
 <p align="center"> 
-   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/429f301e-da75-42c8-ae45-69f5b2c95468"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/8b4d499f-0f4c-4af0-a434-626c1be76f47"> 
       
-     
+  
+   
    
  - The internal structure of the IC looks like shown in figure 1. This is package QFN-48. 
  - Chip is in the centre of the package and is connected to the other pins via wirebonds. This is how signal is tranferred from outside to the internal of the chip.
  - Figure 3 shows the chip internal circuit consisting of various components.
       
-      Pads: send signal inside the chip
+      ***Pads***: send signal inside the chip
       
-      Core: digital logic is placed here
+      ***Core***: digital logic is placed here
       
-      Die: size of the entire chip THAT GETS MANUFACTURED ON THE SILICON WAFER
+      ***Die***: size of the entire chip THAT GETS MANUFACTURED ON THE SILICON WAFER
 
 <p align="center"> 
-   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/8b3b6139-2133-4ab8-a9aa-39bd9af9307d"> 
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/f8d33a05-00ce-46a8-87ae-a3085b0c70f0"> 
   
+
 
   
  - Typical core consists of SoC , SRAM , ADC,PLL, DAC, SPI. 
- - All of the above are called as foundry IPs.  All device performances are dependent on the foundry. IP is the intelligence needed to build up the blocks. 
- - Macros – SPI,SoC – it consists of pure digital logic.
+ - All of the above are called as **foundry IPs**.  All device performances are dependent on the foundry. IP is the intelligence needed to build up the blocks. 
+ - **Macros** (SPI,SoC) – it consists of pure digital logic.
   
   
  #### Introduction to RISC-V  
  Instruction Set Architecture – It is the language of the computer the way we talk with the computer. 
  <p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/1ade684d-a2dd-4792-88e5-cf107c23ae44">     
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/12c59ff8-97db-4339-aba5-f201013bdaab">     
          
+
 
  - Left image is a C program. To make the C program run on a particular layout it is first complied into an assembly language program , in this case it is RISC-V assembly language program 
  - This assembly language program is then converted into machine language program which is the binary language program consisting of 1s and 0s which is understood by hardware of the computer this is then executed in the layout and we get the required layout. 
@@ -112,7 +114,8 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
  #### From Software Applications to Hardware 
   
 <p align="center"> 
-   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/0edc84e8-b0aa-4ec8-8d15-2175bb4da865"> 
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/3b539599-4ee5-4f03-a063-50c29786fa21"> 
+
        
      
  - Application software enters into a block of system software and the system software converts the application program into binary language.
@@ -123,13 +126,14 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
  - Instructions act as an abstract interface between the C program and the hardware. This interface is the instruction set architecture.
   
  <p align="center"> 
-   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/cfdd404a-c934-4444-897c-23dbe700da8b">
-   
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/bcd4af9a-5b38-41f3-bd88-cc882426fd6a">
+  
  - To reach from the abstract interface to the hardware the another interface os the hardware description language to implement the specification of the instructions which is synthesized into a netlist in form of gates and then we have a physical design of the netlist. 
    
  <p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/d58a47c2-7d04-4dfb-9a82-f32c98301288">
-   
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/c011bf39-e870-4bac-b2fa-184bcedbb8a9">
+ 
+
  So the three main parts are:
    1.	RISC –V Instruction Set architecture
    2.	RTL and synthesis of RISC-V based CPU core picorv32a
@@ -146,9 +150,9 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
  Designing digital ASIC requires several elements and all of them are to be present always
    
  <p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/73e31598-8ccd-488d-b035-518785df9c50">
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/6b761b2a-1e0a-43ed-8df5-7f89d398201b">
    
-  
+ 
 
    
  1. *RTL Designs(Register Transfer Level):* There are many open source RTL designs present some of them are librecores.org , opencores.org , github.com. 
@@ -156,17 +160,19 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
  3. *PDKs Data*(Process Design Kits):* It is a collection of files used to model a fabrication process for EDA tools to design an IC. Skywater 130 nm + Google pdk is opensource PDK.
    
  <p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/36d0a908-dba8-4d41-a254-b29ee252377f">
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/7d0b478f-6b99-4df8-9419-cee28494d11d">
    
- 
+
+
 #### Simplified RTL to GDSII flow
   
  The main objective of ASIC design is to take the design from RTL to GDSII
    
 <p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/bdce5052-f645-4cab-9042-29b017caf8de">
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/50f64d14-5466-4c98-a42c-0b127966e001">
   
- 
+
+
   
  1.*Synthesis* 
  - The RTL design is converted into a circuit out of components from the standard cell library.
@@ -175,9 +181,10 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
  - Each cells have different models  Libraty View(includes electrical modles for cells such as delay and power modles), HDL View of the Cells,SPICE View of the Cells,Layout View of the Cells(GDSII view which is the detailed view and Delev view which is the abstract view)
 
 <p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/94f7de8a-a187-4fc6-b62e-a110f493c3e5">
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/fd73f2e7-fdef-44a7-9e75-c8e8cd1ca055">
   
-  
+ 
+
 
  2.*Floor and Power Planning* 
  - Here the objective is to plan the silicon area and create robust power distribution. 
@@ -186,9 +193,7 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
  
  - In power planning the power network is constructed typically a chip is powered by multiple Vdd , and power pins. The power pins are connected to horizontal and vertical metal straps parallelly . Parallel connection reduces the resistance and to address electromagnetic radiation. Power distribution network uses upper metal layers as they are thicker to lower metal layers and hence have low resistance.
 
-<p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/91474b18-7b40-4695-8ec5-2c1849288173">
-  
+
  
  3.*Placements* 
  - Placing the gate level netlist on the vertical rows and must be placed close to eachother to reduce the interconnect delay and to enable successful routing . 
@@ -197,9 +202,9 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
    2. Detailed placement: The positions obtained here from global placement are minimally altered to be legal.
   
  <p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/0e76f216-3943-45ee-adb3-74fa8d77006c">
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/998641fe-8139-4c94-8407-13d1d1ef5adb">
    
-   
+
   
 
  4.*Clock Tree Synthesis (CTS)* 
@@ -208,9 +213,10 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
  - Skew means arrival of clock at different components at different times.
   
   <p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/cd9c8f8b-736c-446a-89d9-fd6383891455">
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/29576aa1-d1c9-4cce-9b3b-d7329a09f028">
     
-    
+
+  
 
  5.*Routing* 
  - In given placement and fixed number of metal layers is require to find a valid pattern of horizontal and veritical wires to implement the nets that connects the cells together. 
@@ -221,8 +227,9 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
     2. Detailed routing:Uses routing grids to implement actual wiring
     
  <p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/a4cc3d32-a78d-4eb2-9374-203ac10accf3">
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/d39462ac-7fd5-4733-95ff-977c1b6ff9f2">
    
+
 
   
  5.*Sign-off* 
@@ -244,13 +251,15 @@ OPENLANE is OpenSOURCE and free and can be used for our purpose. Openlane is sta
 Efabless has a family of SoCs striVe where there is openpdk,openeda,openrtl.
 
  <p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/90544e14-46f6-42b0-8052-108b1a33a79e">
-   
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/915cbdcc-6077-4000-b770-c807a4b35c81">
+
+  
  This family has several members
  
 <p align="center"> 
-   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/5fa2ec14-57d8-4fe5-b011-4ccad5101eb5">
-    
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/68489b5f-046c-4a60-b389-3e6e9a59425d">
+
+   
 - The main goal for Openlane is to produce a clean GDSII without human intervention. Clean means no LVS violations , no DRC violations , no timing violations.
 - Openlane is tuned for Skywater 130nm open pdk also supports XFAB180 and GF130g
 - It is containerized which means functional out of box ,and instructions to build and run natively.
@@ -261,15 +270,15 @@ Efabless has a family of SoCs striVe where there is openpdk,openeda,openrtl.
 * Open lane has a nice feature of design space exploration to find best sets of flow configurations .
 * OpenLane currently has 43 different designs will be using picorv32a 
 
- #### Introduction to OpenLANE detailes ASIC flow 
+ #### Introduction to OpenLANE detailed ASIC flow 
    
  <p align="center"> 
-   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/5fa2ec14-57d8-4fe5-b011-4ccad5101eb5">
-   
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/41f5c323-97f9-4922-aeb1-ee3a9e65f62f">
+  
+
 -	The flow is transferred from the design RTL to the final GDSII layout , to function it needs the pdk.
    
- <p align="center"> 
-   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/5fa2ec14-57d8-4fe5-b011-4ccad5101eb5">
+ 
    
 -	Openlane is based on several opensource projects.
 -	The RTL is fed to Yosys with design constraints . Yosys translated the RTL into logic circuits and later the design is mapped into standard cell library using STL the abc.
@@ -281,7 +290,7 @@ Efabless has a family of SoCs striVe where there is openpdk,openeda,openrtl.
 -	Design Explorations can also be used for regression testing for continues integration{OpenLANE  currently run the exploration in 70 designs and compare the results to the best knonw one}
 -	If we want our design to be ready of testing after fabrication we enable DFT(Design for Test) step(which is optional) and this used open source project "Fault" to perform scan insertion ,automatic test pattern generation , test patterns compaction , fault coverage , fault simulation.
    
--	DFT(Design for Test) also add the data controller which enables the external access to the internal structure.
+-	***DFT(Design for Test)*** also add the data controller which enables the external access to the internal structure.
 -	Now comes the physical implementation that consists of several steps and all are done by openroad app. We used openroad app for
 	 - Floor/Power Planning
    - End Decoupling Capacitors and Tap cells insertion
@@ -310,11 +319,137 @@ Efabless has a family of SoCs striVe where there is openpdk,openeda,openrtl.
 
 
  --- 
- ### Get Familiar to open source EDA tools
+ ### LAB : Get Familiar to open source EDA tools
  --- 
-   
-   
-   
+ #### OpenLANE directory structure in detail
+	 
+-	OpenLANE is a flow conisiting of open source EDA tools like yosys , OpenSTA. Basic requirement for OpenLANE was to have complete RTL to GDS flow and avoid human intervention.
+-	Putting the RTL netlist and foundary pdks what we obtain from the flow is the GDSII file. OpenLANE is very similar to commercial EDA tool.
+-	In this workshop we are working on OpenLANE 
+-	*PDKs:* Process design kit consists of all the information related to pdk. The pdk used in the workshop is skywater 130nm pdk. OpenLANE is built around this pdk. The pdk folder consists of the following files
+	 
+<p align="center"> 
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/fed0d90c-5700-430f-aa03-18d0324ae6ab">	 
+	
+	
+	-	Skywater-pdk: has all pdk related files eg, timing libraries, lef files,tech lef,etc.
+	-	open_pdks:Silicon foundary files are made to work with the commercial EDA tools and not open source. Open_pdks help in mitigating the problem . There are sets of scripts and files that convert these foudnary level pdks to be compatible with open source tools.
+	-	sky130A:pdk which is made compatible to work with open source environment. It has libs.tech and libs.ref subdirectories.
+			1.	libs.ref: All process/ technology related files like timing , cell lef,tech lef , etc. We will be woking on the pdk variant – ***sky130_fd_sc_hd***.
+					-	*sky-process name   fd-foundary  sc-standard cell  hd-high density*
+<p align="center"> 
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/9c1e4211-7dde-43b7-b8cc-72c57c098b09">		 
+	 	
+	 		2.	libs.tech: Files specific to tools. 
+ <p align="center"> 
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/33dd1944-ccd1-4163-9816-dbfdc01f2e60">	 
+ 
+	
+
+ #### Design preparation step
+
+-	Some of the commands in terminal prompt of linux:-
+	-	cd : change directory
+	-	ls : list of the contents inside a folder
+	-	ls –ltr : listing everything inside a folder in a chronological order
+	-	<command name> –-help: specifies about the command
+	-	./flow.tcl:  Specifies the flow has to go according to the script
+	-	–interactive: step by step process
+	-	package require openlane 0.9:import packages required to run the flow
+	-	cmds : all the commands that we have run.
+	-	cp : copy one folder into another directory.
+
+*We will be working in OpenLANE*
+
+<p align="center"> 
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/229fc177-832f-4be5-b4dd-21de3b76fbcb">	 
+
+	
+
+-	The designs required to run on the OpenLANE are been extracted from the designs directory under openlane. There are about 30-40 designs already built in openlane , here we can also built our design.	
+	
+<p align="center"> 
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/4b6d663a-e620-40a1-8d2f-130f5f13d6b6">	
+
+
+- For this workshop will be doing **picorv32a**. The folder consists of following subdirectories.
+	-	src : source. RTL  and SDC information will be present here.
+	-	sky130A_sky130_fd_sc_hd_config.tcl : pdk specific config file.
+	-	config.tcl : Bypassess all the configuration that has already been done in openLANE . Many switches use default values that are already present in openLANE flow.
+
+<p align="center"> 
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/69901dd9-03da-4962-ba62-e2104ed3ff86">	
+	
+**less config.tcl**
+<p align="center"> 
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/3d0ee9f8-bab5-417a-b742-ec5640601f96">	
+	
+-	**set filename** : Tells if there exists a file source that file . So when we run our custom design the sky130 file wont be there but , we have to create a config.tcl file.
+-	 The precedence
+	3	Default value set in openLANE
+	2	config.tcl
+	1	sky130A_sky130_fd_sc_hd_config.tcl – highest precedence
+-	Before synthesis it is desirable to prepare the design setup that would set data structure for the design. It is necessary to set the file system specific to the flow
+	-	Command :**prep –design picorv32a**
+	-	*mergeLef.py* : merge the cell lef and tech lef files
+
+<p align="center"> 
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/e12bf36b-b263-4aab-bd97-77e96bada0ae">	
+	
+
+ #### Review files after design prep and run synthesis
+-	Check if anything new created in design library. *Runs* directory is created with the current working date.
+-	**config.tcl:** Tells about the default parameters that will be taken by the run
+<p align="center"> 
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/96008773-99c0-48a1-b0b3-1af4c5d63469">
+
+*merged.lef files:*
+1. **tech.lef**	
+	
+<p align="center"> 
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/00727df0-8357-41cc-99b5-eb580a4ce940">
+
+	
+2. **cell.lef**
+	
+<p align="center"> 
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/13436f9f-18bb-447f-bbeb-1e5b5660b714">
+
+	
+
+-	One good thing about openLANE is that changes can be made on the flight . Making changes in the original file the number will be updated on the config.tcl file
+-	Running the synthesis : run_synthesis. This will run the abc and yosys synthesis.
+
+
+<p align="center"> 
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/adb9e2c4-02d1-4349-9e17-9ff1537f926e">	
+<p align="center"> 
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/ad312c01-3644-4c28-bc42-384d6dae4c4c">	
+
+
+#### Steps to characterize synthesized results
+-	*Calculation of flop ratio: No of d flip flops to the total number of cell*	
+	
+<p align="center"> 
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/40cfbbeb-def1-416c-8eb0-4b992f286ce8">	
+	
+
+<p align="center"> 
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/cbc76488-68f8-4e95-a36e-d7f12e799c6d">	
+	
+
+**Flop count = 0.1084 = 10.84%**
+-	Check the results and reports in the runs folder. Check under synthesis.
+
+<p align="center"> 
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/9d78edc9-ee5f-47ea-bf85-4253febc2c5a">	
+<p align="center"> 
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/ffd1d876-e4c5-4943-81db-7e6a12e86ffa">	
+
+
+
+
+	
  ## Day 2: 
  ## Good floorplan vs bad floorplan and introduction to library cells
   
@@ -324,13 +459,14 @@ Efabless has a family of SoCs striVe where there is openpdk,openeda,openrtl.
  #### Utilization factor and aspect ratio
    
 <p align="center"> 
-   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/86a0b01a-6151-4ead-94f4-a7027eedf613">
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/69dd80d7-2d22-481c-9004-cebfd9ceb547">
 
 Consider a basic netlist of 2 flip flops :- Launch flop(Left one) and the capture flop(right one) and a simple combinational logic between. 
   
 <p align="center"> 
-   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/d74ca6af-9344-4741-ad37-e138f8b13684">
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/354482ef-f3e1-418d-b988-22d657abac6a">
   
+
  - And,OR gates :- Standard Cells         
  - Flip Flops:- Latches/Registers
   
@@ -338,27 +474,28 @@ Consider a basic netlist of 2 flip flops :- Launch flop(Left one) and the captur
 -	Dependent more on the dimensions of the logic gates/Standard cells: therefore try giving a proper length and breadth to the gates.
 
  <p align="center"> 
-   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/ff5ab0c8-ff5f-4b94-bbc5-4e6b6126ac32">
- 
+   <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/e6eff31a-e3dc-49cb-8708-7e706146c4b2">
+
+
 - To identify the dimensions of the chips we should be knowing the dimensions of the gates excluding the wires.
 -	Considering the Standard cells and Flip flops having dimensions of 1unit we get an area of 1sq unit.
 -	Bring the gates and flip flops together : the total area we get is 4sq units. This is the minimum area of the netlist.
    
  <p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/2b2fe937-f263-454a-b4d4-d6079e29662d">
- 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/501465c3-4729-46ad-a8d3-a11784543f6e">
+
+
 Core:Section of the chip where the fundamental logic of design is placed
 Die:Consists of core , a small semiconductor material specimen on which the fundamental circuit is fabricated
    
 <p align="center"> 
-    <img src="(https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/0fcd986c-3906-4164-9154-949e710604fa">
-
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/ce558824-0a4a-4bd3-9c2e-3a7913dc0198">
 
    
 Placing all the logic cells inside the core . The logical cell occupies all the area of the core which specifies the utilization is 100%
 
 <p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/ad29d0dc-386b-41b5-a5b9-5f29d3b06e47">
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/6f46e61b-1d07-4f9c-81fc-6a104763532c">
 
 *Utilization factor = Area occupied by netlist / Total Area of core*  = (4 x 1sq unit)/ (2sq unit x 2sq unit)=1=100% i.e extra cells cannot be added in this core.
 - Ideally the utilization factor is 50-60%
@@ -371,12 +508,18 @@ Placing all the logic cells inside the core . The logical cell occupies all the 
 *Preplaced cells:* Combinational logic undergoes a simple digital logic .The output of combinational logic can consist of huge gates. We can divide the circuit logic for further simplification  and can be separated into two different blocks. The individual blocks can be made to work when needed. Both the blocks can be implemented seperately.
   
 <p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/23634c20-9468-45fd-b0be-274f9f71aa6e">
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/0689a587-e8b3-4d08-9419-64023e9d0c2a">
+
   
 When they are put into a black box and the wires are detached the circuitry inside the block in not visible for the user.
 
 <p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/27030d52-d181-4b9a-a6ed-cd7897f49c15">
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/d0eb6055-09be-4219-84df-5f60c35343b4">
+	
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/1fbe1e03-dac0-44bf-9a98-35836a78f328">
+
 
 - Similarly, there are some other IP’s available like comparators, MUXs, etc
 -	The arrangement of IPs in the chip is called floorplanning.
@@ -387,8 +530,8 @@ When they are put into a black box and the wires are detached the circuitry insi
   The preplaced cells can be be placed into the chip area according to the design scenarios. These locations cannot be changed once placed.
   
   <p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/6f96ada2-99bb-4339-b262-b72dc5e2ac86">
-    
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/1227ade5-a6e8-4ffa-bc1d-77ba49a56195">
+  
 -	We have to surround the preplaced cells with decoupling capacitors.
 -	Consider the circuit below to be a part of any block. Whenever a circuit switches there is a amount of current it needs. There is a small capacitor and when the transition happens the capacitor has to completely charge or discharge. The amount of charge will be sent by the supply voltage. 
 -	When voltage flows through the wires there is a drop because of the resistance. Hence the voltage reaching the circuit is less than the supply.
@@ -396,43 +539,51 @@ When they are put into a black box and the wires are detached the circuitry insi
 -	If it's not within the noise margin range then unwanted transitions between logic 0 and logic 1 can take place.
 
  <p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/34127557-f5a5-481f-b369-267a0f168836">
-   
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/0dbeeb19-87f3-41b8-8c7a-ac3b4b479342">
+  
+ 
 - This problem can be solved by decoupling capacitors. Huge capacitor filled with charge . the voltage across it is similar to that of power supply. The circuit gets the current from the decoupling capacitor.
 -	The issue of voltage drop is resolved.
    
  <p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/bc4601a9-d8e3-417d-83d2-4daa7adfd6c1">
-   
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/06665f16-4ab6-4915-8375-be6bb8d3c905">
+ 
+ 
   <p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/bc4601a9-d8e3-417d-83d2-4daa7adfd6c1">
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/e6596c37-00cb-48ff-828f-1369fe2e3d79">
     
-  
+ 
+
   #### Power planning
     
 - Consider a circuit consisiting of driver and load connected with the power supplies, where we want that the signal coming from the driver should reach the load in the similar fashion without any transistion.
 <p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/bc4601a9-d8e3-417d-83d2-4daa7adfd6c1">
-  
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/2aa9c57a-0287-45a3-ba36-15b89a9be21e">
+
+
 - Assume the red path is 16 bit bus and is charged from logic 0 to logic 1
 - For load to retain the same signal it should get the necessary supply from the power because we don’t have any decoupling capacitor. Hence , power supply has to provide the voltage.
 - It is not a good idea to attach decoupling capacitors to the entire chip. For some blocks its alright.
 - As the supply line and the bus line are placed far away there will be voltage drop occurring. There cn be issues of ground bounce and voltage drop.
 - Power was coming from single source instead if multiple power supplies can be given the issue can be solved as the circuit takes the current from the nearest power supply.
 <p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/bc4601a9-d8e3-417d-83d2-4daa7adfd6c1">
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/522fc467-387b-476f-b452-db4be8974437">
+
 
  #### Pin placement and logical cell placement blockage
  
+Consider a design
 <p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/bc4601a9-d8e3-417d-83d2-4daa7adfd6c1"> 
-  
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/98a3a65e-f7d3-4dd6-bb46-1ce438d7f7bd"> 
+
+
 -	The connectivity information between the gates is coded using VHDL/Verilog language and is called a netlist.
 -	Placing all of the circuits in the core and die.
 -	All the i/p pins on right and o/p pins on left preferably
   
 <p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/bc4601a9-d8e3-417d-83d2-4daa7adfd6c1">
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/b0270ada-3a42-4202-b8e3-39d479938db3">
+
   
 -	Ordering of i/p and o/p pins is random.
 -	Clock ports are bigger in size compared to data ports as they are driving all the cells continuously.
@@ -446,14 +597,17 @@ When they are put into a black box and the wires are detached the circuitry insi
  #### Netlist binding and initial place design
   
 - Bind netlist with physical cells : There are no shapes defined for gates . In reality they are contained in boxes. Giving the cells physical dimesnions. Each component in the netlist is been given a proper width and height.
-<p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/bc4601a9-d8e3-417d-83d2-4daa7adfd6c1">
-  
+
+
+ 
 - These blocks are present in library. Library also has all timing information . 
 Library consists of also shapes and sizes. Bigger in size least resistance path and they can be faster.
 - Placement : Placing the shapes and sized inside a floorplan. The physical views are to be placed on the floorplan  with the help of connectivity seen inside a netlist.
 <p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/bc4601a9-d8e3-417d-83d2-4daa7adfd6c1">
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/1f49cab0-c499-4b3d-acbb-607299052706">
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/1f49cab0-c499-4b3d-acbb-607299052706">
+
   
 - Place the netlist close to the i/p blocks in the floorplan so that the logical connectivity is maintained.
 
@@ -466,9 +620,10 @@ Library consists of also shapes and sizes. Bigger in size least resistance path 
 -	Based on the estimation of wire length required there will be capacitance calculation and upon that waveform is created and the transistion of waveform should be in persimmable range.
 -	Slew is dependent on the value of capacitor. Higher the value of capacitor the amount of charge required to charge the capacitor will be high and the skew will be high.
 <p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/bc4601a9-d8e3-417d-83d2-4daa7adfd6c1">
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/b70c592c-0174-4066-85af-9616b9495416">
   
- 
+
+
  #### Final Placement Optimization
   
 -	Abatment reduce the time delay between the logic.
@@ -498,7 +653,8 @@ Library consists of also shapes and sizes. Bigger in size least resistance path 
 -	Library has got cells of different functionality , different sizes and different threshold voltages .
 
 <p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/ff3c8bb9-f395-4051-9f55-b359f2c85ea8">
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/4acbe8ee-61de-40ef-a00d-e3bf77a750cd">
+
 
 -	Variation of threshold voltages define the speed.
 -	For a IC design flow the component has to be derived in the form of size,shape,power,drive strength and so on.
@@ -510,7 +666,11 @@ Library consists of also shapes and sizes. Bigger in size least resistance path 
 
 
  #### Circuit , layout and typical characterization flow
-  
+ <p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/e5930ca7-0f3e-4904-8f2f-5d983f52c198">
+	 
+	
+
 -	Design steps: Designing the component. Developer takes the input and comes with the library cell that adheres to the inputs. 
   -	Circuit design:Typically involves involves implementing the function and model the transistors to meet the library requirements. Output we get from here is a circuit description language.
   -	Layout design:a. Implementing the values into a layout.
@@ -525,6 +685,11 @@ Library consists of also shapes and sizes. Bigger in size least resistance path 
  
 *Characterization:*
 Layout , description and spice extracted netlist of the component. There is sub circuits consisting of transistor definations.
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/a0bd88a2-fe89-4f3e-9936-044b6745fa76">
+	
+
+
 1.	Read the model files
 2.	Read the extracted spice netlist.
 3.	Recognize behaviour of buffer.
@@ -533,10 +698,13 @@ Layout , description and spice extracted netlist of the component. There is sub 
 6.	Apply stimulus.
 7.	Provide necessary output capacitance.
 8.	Provide necessary simulation command.(DC or transisition)
-9.	Feeding all of the above the inputs from config file into characterization software called GUNA. This will generate timing noise.
+9.	Feeding all of the above the inputs from config file into characterization software called **GUNA**. This will generate timing noise.
 a.	Timing characterization
 b.	Power characterization
 c.	Noise characterization
+ <p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/e92aba05-560f-4ca6-a062-14904ee30840">
+
 
 
 --- 
@@ -552,15 +720,172 @@ c.	Noise characterization
 -	We need the above values to calculate the skews of the waveform.
 -	In the transient analysis definations related to the input in the waveform: in_rise_thr,in_fall_thr,out_rise_thr,out_fall_thr- thresholds for the delays. To calculate delays of the particular inverters. 50% values.
 
-  
+ <p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/a3163ed9-ca9e-4621-b2b2-aacf661ed92a"> 
+	 
+	
 #### Propogation delay and transistion time
   
 - Propogation delay: time out threshold-time in-threshold = delay of the buffer.
 - Transistion time: time(slew_high_rise_thr)-time(slew_low_rise_thr) or time(slew_high_fall_thr)-time(slew_low_fall_thr)
 
-  
-  
+  --- 
+ ### LAB : Get Familiar to open source EDA tools
+ --- 
+ #### Steps to run floorplan using OpenLANE
+
  
+-	Synthesis run has been successful and now we are going for floorplan.
+-	In floorplan we set the die area, the core area , aspect ratio , utilization factor , place input output cells, power distribution network, macro placement.
+-	Standard cells are not placed in floorplan.
+-	OpenLANE has many switched which address the floor direction.
+-	To know about the switches go in the configuration folder of openlane.
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/9e1d1cb6-8331-41f4-b6fd-c7e9da46586b">
+	
+
+-	Open the *README.md* file . There are variables(switches) required for each stage.
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/67979df1-c794-45a3-b083-bd472fd02c6b">
+
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/5667fd27-189c-48e6-9fff-a67499351dc8">	
+	
+	
+
+-	We can set the parameters according to the flow. Because it might happen that we require certain parameters at certain time hence, we can keep the others undisturbed.
+-	*Target density(PL_TARGET_DENSITY)* states how close or how spread you want ypur cells to be . 1-closely packed 0-widely spread.. Preferable is to set it to 0 as we have to d conjestion analysis and timing constraints are to be met.
+-	Open the **floorplan.tcl** in configuration , you will see the parameters that are default set in openlane.
+
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/aef6dacc-0bca-4bff-825d-a04e368c7323">		
+-       **(FP_IO_MODE):** Tells about how we want the pin configuration. 1- randomly but equidistant  0-not equidistant
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/aef6dacc-0bca-4bff-825d-a04e368c7323">
+	
+	
+-	Precedance of the settings is
+	3.floorplan.tcl: 
+	2.config.tcl : the horizontal and vertical metal layers here are one more than in the
+        1.sky130A sky130_fd_sc_hd_config.tcl – highest
+
+	
+-	Finally run the floorplan **run_floorplan**
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/49b7e9c3-19fe-489d-a5fd-7b158c2a40c0">
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/7506558a-5266-4079-bfff-780968c08578">	
+
+
+	
+ #### Review floorplan files and steps to review floorplan files
+
+-	Check whether the switches in config.tcl take precedence over system defaults.
+-	Config.tcl file inside the runs directory tells about all the conifiguration taken by the floor.
+-	To check the values of HMetal/VMetal go into the floorplan directory inside logs in runs. 
+-	Go in **-ioPlacer.log**
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/5c6d6ef5-7e77-4615-9997-25b434b5d4cc">
+
+- 	Values are overwritten by pdk config.tcl
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/6aec93bd-b638-4678-8c52-e8c421669821">	
+	
+
+-	To see how floorplan looks like go in results , floorplan. A **def**(design exchange format) file will be present. Opening the def file	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/238d6577-1ce8-4c7c-ba98-7bc33cc4dd70">
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/83293eee-1c98-4e1b-a0fd-b443bbf63219">
+	
+
+	
+*Die area(Area of whole die) : (lower left x value    lower left y value)(upper right x value    upper right y value)*
+Unit is set above (displayed in the image)  . Therefore , the database is unit/micron.
+
+	
+
+	
+#### Review floorplan layout in magic
+	
+- To look at the actual layout after program. magic –T <directory of the tech file>.T for tech file. 
+- **lef** file will be taking here is the merged.lef file.
+- & - free ups the prompt when magic launches	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/478d89a6-6715-4b49-a066-6b18e9a7c997">
+
+
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/ac23f1f3-367c-46f0-8b01-ee1b8fa5d6b0">	
+	
+-	Select the entire layout by pressing **s(( and then to centre align press **v**.
+-	To zoom into a particular portion of the layout  press left mouse button then the right and then click z.
+-	To select a particular cell , hover your pointer on the cell and press s – the cell or pin will be selected.
+-	We had set the input output pins to 1 which tells they are equidistant.
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/616d74b7-7165-4d2d-bdbe-0c27c0e2aac4">
+
+
+
+-	Go on the tkcon window and enter what. It shows the layer on which the pin is in.
+-	Similarly this can be done for vertical pins.
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/463c19de-7873-4d3a-9e9f-29126097c543">
+
+-	There are d cap cells arranged along the side row
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/f5f2ab65-f95a-4afe-a40a-461f03573abc">	
+
+	
+-	There are tap cells meant to avoid latch conditions in the CMOS devices like preventing substrate to the ground.They are diagonally equidistant which was already stated in the README 
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/04ec2204-8cc5-494f-8b5c-b821d3f0ee7f">
+	
+	
+
+-	There are standard cells present at the bottom.
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/a71d777d-5015-4078-a75e-cb580f2582db">
+
+
+	
+	
+####Congestion aware placement using RePlAce	
+- Post floorplan is the placement stage that happens in 2 stages:
+	1. Global Placement: Forced placement. No legalizations. Legalization means standard cells should be exactly under the standard cell rows without any overlaps.Reduces the wire length.
+	2. Detailed Placement:
+	
+- **run_floorplan**
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/bfa4e9f5-18b7-4b3b-8ca3-e3c8995ead6e">	
+- We have to converge the overflow.
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/67c6167c-1939-4f91-9aaa-96c7fae70845">
+	
+
+-To see the design post placement . Go into placement folder of results. A def file will be created.
+- Enter the command for magic view.
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/c8da775b-9d29-4ff4-8ea7-04b49cbdb6a4">		
+
+- Magic view of the placement 
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/dbab0231-6953-4f5a-8a89-89dace764312">	
+	
+- These many are the standard cells at the initial stage of floorplan.
+- Placement of standard cells in standard cell rows.
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/220c9a40-5540-4d49-bec3-8b411a7aa60">	
+
+
+	
   ## Day 3: 
  ## Design library cell using Magic Layout and ngspice characterization
   
@@ -568,51 +893,194 @@ c.	Noise characterization
  ### CMOS Inverter ngspice Simulations 
  --- 
  #### Spice deck creation for CMOS inverter
-  
-  
+ SPICE deck : Is a connectivity information about the netlist having all the input informations , tap points for output.
+- Creating a Spice desk for CMOS inverter
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/e8657ccd-5d57-46f1-8c09-58f7e74d6b0f">	
+	
+- Spice Deck should consist information about the substrate as well. Substrate pin tunes the voltage of PMOS and NMOS.
+- cLoad value is assumed to be 10fF.
+- Define the W/L values of PMOS and NMOS. Ideally PMOS should be twice or thrice the NMOS.
+- Later define the voltage values og gate and drain.
+- Identify the nodes.
+- Naming the nodes
+	
+Writing the spice deck	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/d8503160-f049-4242-a38b-aded1a3b3441">	
+<tran drain gate source substrate pmos W L>
+<tran drain gate source substrate nmos W L>
+	
  #### Spice simulation lab for CMOS inverter
-  
-  
+ 
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/71449ae3-7c9e-4238-9a56-443f5ab54deb">
+
+<compomenent node 1 node2 value>
+
+- Simulation commands
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/444c07fb-f568-4e7d-b355-a1feed8f761b">
+ Sweeping gate input voltage <start value    end value    step>	
+
+- Describing model file
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/49b0b4e0-4427-4d1f-991a-6bc20829d3a8"> 
+
+All parameters related to the technology node are described here.
+
+
   
   #### Switching threshold Vm
   
-  
-  
-  #### Static and dynamic simulation of CMOS inverter
-  
+- CMOS inverter is a robust device and is hence used for building logic gates.
+
+*Switching Threshold (Vm):* a. Point at which the device switches. 
+		       	b. Vin=Vout.
+			c. Both PMOS and NMOS are in saturation region. hence, there will be leakage current.Therefore, current flows directly from power to ground.
+ 
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/73118af1-80d6-4612-82cc-cdeab62522af">  
   
   
   --- 
  ### Inception of layout of CMOS fabrication process
  --- 
   
- #### Create active regions
-  
-  
-  
- #### Formation on N-well and P-well
-  
-  
- #### Formation of gate terminal
-  
-  
- #### Lightly doped drain (LDD) formation
-  
-  
- #### Source and drain formation
-  
-  
- #### Local interconnect formation
-  
-  
-  
-#### Higher level metal formation
-  
-  
 
- 
   
+ 1. Selecting a substrate: GDSII from physical layout substrate gets actually fabricated on the substrate. Most common is p-type substate with a good resisitivty, doping and orientation.
+ 2. Creating active regions for the transistors.Creating pocket like structures on ths substrate which would be connected on the metal layers.
+	a. Creating Isolation within the pockets by growing a insulator (SiO2) , then depositing a layer os silicon nitride (Si3N4) , deposition of photoresisit
+  	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/8705a5eb-3dc3-4cd2-9fc6-83f43971e496"> 
+	b. Layouts are called as masks. Masking the device using photolithography and creating wells.
+	c. Removing the mask.
+	d. Etching the Si3N4 and photoresist.
+	e. Placing into furnance creating oxidation of Silicon.
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/fc7fa9b8-7ab8-4e35-99a3-3fb6bc259aef">	
 
+  3. N-well and P-well Formation
+	- Masking and Photolithography.
+	- Ion implantation is carried to make the subsequent wells (Boron for p-well and phosphorous for n-well).
+	- Diffuing the wells using furnance.
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/f662a9c9-8f1d-4659-ab37-3136399e725c">
+  
+ 4. Formation of gate
+	- Oxide capacitence and doping concentration impacts the threshold voltage.
+	- Create doping inside p-type and n-type transistors with less energy.
+	- Oxide was etched and later regrown as due to masking damages are occured in the oxide layer.
+	- Depositing polysiliocn layer for gate terminal and for low resistance dope it with more impurities.
+	- Again carry photolithography for creating contacts.
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/507a76bb-0776-416c-bda9-30050b96be39">
+	
+
+5.  Lightly doped drain (LDD) formation
+	-For PMOS fabrication we need P+,P-,N. Source and drain are P+.P- is the LDD and N-N-well.
+	-For NMOS fabrication we need N+,N-,P. Source and drain are N+.N- is the LDD and P-P-well.
+	- P- and N- is needed for short channel effect and hot electron effect.
+	- Spacers help in keeping LDD intact while constructing source and drain.
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/5252362f-dbcc-479e-8c6d-7433f888239a">	
+	
+
+  
+6.  Source and drain formation
+	- Thin screen oxide to avoid channeling during implants.
+	- Annealing the device.
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/854b9793-82f5-4f60-a9fa-c02830626bc0">	
+	
+
+7. Local interconnect formation
+	- Etching oxide using HF.
+	- Depositing titanium on wafer using sputtering.
+	- Deciding the contacts needed
+ <p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/2254299f-6a25-47af-9b05-098e5552ccf3"> 
+
+
+8. Higher level metal formation
+	 - Surface is non-planar. To planarize deposit SiO2 doped with phosphorous and boron , later do polishing.
+	 - Mask and deposit TiN as it is a good barrier layer followed by deposition of tungstes to form good contacts.
+	 - Making interconnects outside using Al and W.
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/900b2877-9d2b-4d12-ad7a-dfba72ffa5bb"> 
+	
+  --- 
+ ### LAB : Labs for CMOS inverter ngspice simulations
+ --- 
+ #### IO placer revision
+- Here we will not be building the cell from scratch, we downloaded a mag file from the github link.
+- From .mag file will be doing post layout simulation in ngspice and post characterizing the sample cell.
+- Will be opening the cell in picorv32a.
+	
+- OpenLANE alows changes on the flight. For this :
+	1.There are 4 stragtegies placed by the IOPlacer(opensource EDA tool used to place IOs in the core) 
+- To change the settings , go to floorplan.tcl where the default settings are wriiten , copy tha setting you want to change and set it to a new value as following.
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/0b7fedc5-a177-45d8-b3b6-7f45ccccac3c"> 
+- Run the floorplan again and check if the changes are been appended.
+
+#### Gitclone vsdcelldesign
+	
+- Copy the url from the github link : https://github.com/nickson-jose/vsdstdcelldesign.git
+- In the terminal under openlane foler type **git clone <url>**.
+- This created vsdstdcelldesign folder in the openlane.
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/c38a645b-2559-4e8f-9e5b-596994836cf8"> 
+- Will be doing spice extractions and post layout spice simulations.
+- Copy the tech file in vsdcelldesign folder
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/c5d9e425-e62e-4431-a1ed-d724e6ee5c03">
+
+- To view the layout in magic plane
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/5cc00e7e-c8c2-4e41-a6bf-c834bcdc4adf">
+	
+
+- We get the inverter layout	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/7daeafe7-49cb-497f-9862-bb0ba7c5a917">	
+	
+#### Introduction to Sky130 basic layers layout and lef using inverter
+
+- Layers for basic CMOS inverter are visible on the magic layout.
+- Right side of the magic window are the colour palettes these are the layers. The first layer is interconnecr layer. Metal layers are also shown in different colours.
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/d6f56676-ad4a-4cdd-a622-a2cadf2f922a">
+- The green in the centre is the n-diffusion region which is identified by the help of the colour palette.Similarly , brown is the p-diffusion region.
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/393d6847-98ae-419c-8357-7a22ff6ab584">	
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/da93bc9f-88ac-4a74-a643-baa54c04262e">
+-When poly crosses n diffusion - NMOS and when poly crosses p diffusion -PMOS
+-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
    ## Day 4: 
  ## Pre layout timing analysis and importance of good clock tree
   
