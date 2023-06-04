@@ -1166,6 +1166,10 @@ Solution was to bring *Delay tables*
 - The timing model of each cell is recorded and is summarised in delay tables, which are part of the liberty file. The output slew is the main cause of delay.
 
 #### Delay tables usage
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/65c0f21e-35a7-4ebc-8a7b-9c1cc426cd6c">
+- Fill up the value of input transistion , fill up the value of output load and get corresponding delay.
+
 
 
   --- 
@@ -1265,6 +1269,9 @@ run_synthesis
 
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/a6928f31-52c4-4953-8a4c-d46396ab3914">
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/5c991caf-4677-4815-a76e-de9b3cb21381">
+
 
 
 
