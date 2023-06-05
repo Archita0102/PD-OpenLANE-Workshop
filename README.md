@@ -1261,10 +1261,11 @@ run_synthesis
 	
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/eec879aa-e49e-4ee9-96e2-abe3209415a5">
-- wns has the worst slack.
-- Need to balance between delay and area.
-- Chip area : 147712.918400
-- Buffering - Buffering is for high fan out rates.Sizing and buffering is been enabled.If fanout is high it needs more driving strength.
+	
+-  wns has the worst slack.
+-  Need to balance between delay and area.
+-  Chip area : 147712.918400
+-  Buffering - Buffering is for high fan out rates.Sizing and buffering is been enabled.If fanout is high it needs more driving strength.
 
 
 <p align="center"> 
@@ -1273,9 +1274,36 @@ run_synthesis
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/5c991caf-4677-4815-a76e-de9b3cb21381">
 
 
+-  After synthesis we perform run_floorplan.
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/6bf14657-55c4-4594-b69f-4de62aadc2b1">
 
 
+- Here ,we encounter an issue with the flow hence , we run other commands for the floorplan stage
+	- init_floorplan
+	- place_io
+	- global_placement_or
+	- tap_decap_or
 
+-  Finally we give the run_placement command. Simultanoeously , we obtain a .def file under our placement folder inside the result.
+-  To view the layout give the command for magic tool.
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/56af3625-5dc5-4e75-bd47-4b513e72c9df">
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/a434a4ab-90e7-4fa5-85ad-a763f030592c">
+
+-  Zoom into the layout to see whether our cell is plugged into the design.
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/eb61ff3a-2144-4874-b9e7-a32f3ff765a2">
+	
+- Expand the layout to see the internal structure.
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/75911dd5-56eb-4089-8e89-6171d2133853">
 
 
 
