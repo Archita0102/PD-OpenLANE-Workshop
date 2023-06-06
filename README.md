@@ -335,7 +335,6 @@ Efabless has a family of SoCs striVe where there is openpdk,openeda,openrtl.
    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/fed0d90c-5700-430f-aa03-18d0324ae6ab">	 
 	
 - Some commands above.	
-	-   `src` : source. RTL  and SDC information will be present here.
 	-   `Skywater-pdk` : has all pdk related files eg, timing libraries, lef files,tech lef,etc.
 	-   `open_pdks` : Silicon foundary files are made to work with the commercial EDA tools and not open source. Open_pdks help in mitigating the problem . There are sets of scripts and files that convert these foudnary level pdks to be compatible with open source tools.
 	-   `sky130A` :pdk which is made compatible to work with open source environment. It has libs.tech and libs.ref subdirectories.
@@ -910,8 +909,8 @@ Unit is set above (displayed in the image)  . Therefore , the database is unit/m
  ### CMOS Inverter ngspice Simulations 
  --- 
  #### Spice deck creation for CMOS inverter
- SPICE deck : Is a connectivity information about the netlist having all the input informations , tap points for output.
-- Creating a Spice desk for CMOS inverter
+ **SPICE deck :** Is a connectivity information about the netlist having all the input informations , tap points for output.
+- Creating a `Spice` desk for CMOS inverter
 
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/e8657ccd-5d57-46f1-8c09-58f7e74d6b0f">	
@@ -934,13 +933,14 @@ Writing the spice deck
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/71449ae3-7c9e-4238-9a56-443f5ab54deb">
 
-<compomenent node 1 node2 value>
+***<compomenent node 1 node2 value>***
 
 - Simulation commands
 	
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/444c07fb-f568-4e7d-b355-a1feed8f761b">
- Sweeping gate input voltage <start value    end value    step>	
+ 
+Sweeping gate input voltage ` <start value    end value    step> `	
 
 - Describing model file
 
@@ -975,10 +975,11 @@ All parameters related to the technology node are described here.
   	
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/8705a5eb-3dc3-4cd2-9fc6-83f43971e496"> 
-	b. Layouts are called as masks. Masking the device using photolithography and creating wells.
-	c. Removing the mask.
-	d. Etching the Si3N4 and photoresist.
-	e. Placing into furnance creating oxidation of Silicon.
+	
+	-  Layouts are called as masks. Masking the device using photolithography and creating wells.
+	-  Removing the mask.
+	-  Etching the Si3N4 and photoresist.
+	-  Placing into furnance creating oxidation of Silicon.
 	
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/fc7fa9b8-7ab8-4e35-99a3-3fb6bc259aef">	
@@ -1039,7 +1040,7 @@ All parameters related to the technology node are described here.
  --- 
  #### IO placer revision
 - Here we will not be building the cell from scratch, we downloaded a mag file from the github link.
-- From .mag file will be doing post layout simulation in ngspice and post characterizing the sample cell.
+- From ` .mag` file will be doing post layout simulation in ngspice and post characterizing the sample cell.
 - Will be opening the cell in picorv32a.
 	
 - OpenLANE alows changes on the flight. For this :
@@ -1047,17 +1048,19 @@ All parameters related to the technology node are described here.
 - To change the settings , go to floorplan.tcl where the default settings are wriiten , copy tha setting you want to change and set it to a new value as following.
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/0b7fedc5-a177-45d8-b3b6-7f45ccccac3c"> 
-- Run the floorplan again and check if the changes are been appended.
+	
+-  Run the floorplan again and check if the changes are been appended.
 
 #### Gitclone vsdcelldesign
 	
 - Copy the url from the github link : https://github.com/nickson-jose/vsdstdcelldesign.git
-- In the terminal under openlane foler type **git clone <url>**.
+- In the terminal under openlane foler type `git clone <url>`.
 - This created vsdstdcelldesign folder in the openlane.
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/c38a645b-2559-4e8f-9e5b-596994836cf8"> 
-- Will be doing spice extractions and post layout spice simulations.
-- Copy the tech file in vsdcelldesign folder
+	
+-  Will be doing spice extractions and post layout spice simulations.
+-  Copy the tech file in vsdcelldesign folder
 
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/c5d9e425-e62e-4431-a1ed-d724e6ee5c03">
@@ -1078,14 +1081,16 @@ All parameters related to the technology node are described here.
 	
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/d6f56676-ad4a-4cdd-a622-a2cadf2f922a">
-- The green in the centre is the n-diffusion region which is identified by the help of the colour palette.Similarly , brown is the p-diffusion region.
+	
+-  The green in the centre is the n-diffusion region which is identified by the help of the colour palette.Similarly , brown is the p-diffusion region.
 	
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/393d6847-98ae-419c-8357-7a22ff6ab584">	
 
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/da93bc9f-88ac-4a74-a643-baa54c04262e">
--When poly crosses n diffusion - NMOS and when poly crosses p diffusion -PMOS. On layout you can verify by sending a command on tkcon window.
+	
+-  When poly crosses n diffusion - NMOS and when poly crosses p diffusion -PMOS. On layout you can verify by sending a command on tkcon window.
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/e39a704d-25f1-48d8-a8c4-dfa3ac7d0b96">
 
@@ -1102,18 +1107,20 @@ Similarly other connections can also be checked.
 	
 #### Create standard cell layout and extract spice netlist
 
-- We have to take care of the DRC rules been validates. Checking out the metal layers.
-- To extract the layout on spice , open the tkcon folder to get the location of our design.
-- To create extraction file, commands in the tkcon window are as folows:
+- We have to take care of the *DRC* rules been validates. Checking out the metal layers.
+- To extract the layout on spice , open the `tkcon` folder to get the location of our design.
+- To create extraction file, commands in the tkcon window are as follows:
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/f96128aa-66e0-449e-971e-0590095fae46">
-- Check if the file is obtained inside the vsdstdcelldesign folder.
-- Use the ext file to create a spice file to be used in the ngspice tool.
-- Type following commands in terminal . the **cthresh 0 rthresh 0 extract** all parasitic capacitors.
+	
+-  Check if the file is obtained inside the `vsdstdcelldesign` folder.
+-  Use the ext file to create a spice file to be used in the `ngspice` tool.
+-  Type following commands in terminal . the `cthresh 0 rthresh 0 extract` all parasitic capacitors.
 
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/b3aed3a4-2f45-453b-8dac-268ac78d39df">	
-- Spice file is created
+	
+-  Spice file is created
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/b5eb4b13-857a-4cda-8971-cf3ea806e3c2">
 
@@ -1155,6 +1162,7 @@ Fall Delay = 4.07574ns- 4.05016ns = 0.06385 ns
 
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/77b0e0a6-2a84-4337-8700-3681f5738af6">
+	
 -  The characterization done above was done at 27°C.
 -  We have characterized our inverter. Next objective is to create a .lef file using the layout to be used in openlane and plug the cell into picorv32a code.
 	
@@ -1175,6 +1183,7 @@ Problem:
 
 After splitting the buffers.
 Buffers on the same level must have same capacitive load to ensure same timing delay or latency on the same level. It means that each buffer at the same level is having same load.
+	
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/a23f5c01-5da4-4f1c-ac84-e93acef9fb5">
 
@@ -1188,6 +1197,7 @@ Solution was to bring *Delay tables*
 #### Delay tables usage
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/65c0f21e-35a7-4ebc-8a7b-9c1cc426cd6c">
+	
 -  Fill up the value of input transistion , fill up the value of output load and get corresponding delay.
 -  Capacitive load and input slew are also factors that affect output slew. The input slew has its own transition delay table and is a function of the previous buffer's output cap load and input slew.
 
@@ -1304,24 +1314,28 @@ Data Arrival TIme < Data Required Time.
 
 - We dont require information of power , ground in place and route.
 - We just require the inner library and i/p , o/p port.
-- This is where /lef file comes into picture . .lef consists of this info. It potects our IP/micro.
-- Extracting .lef file from .mag file and plug into picorv32 flow.
+- This is where `.lef` file comes into picture . `.lef` consists of this info. It potects our IP/micro.
+- Extracting `.lef` file from .mag file and plug into picorv32 flow.
 	- Make sure the input and output port lie on intersection of vertical and horizontal track.
 	- Width of standard cell must be odd multiple of the track pitch.
-- Go into the tracks.info of the pdk folder
+- Go into the `tracks.info` of the `pd`k folder
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/5bd317bb-5cad-4c95-864a-cd8588593efc">
+	
 - Tracks are used during the routing step. Routes can go over the tracks.
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/11cc822b-1be7-4b1e-a4c4-9ed97e31eb8a">
+	
 - Routes are the metal traces . We have to decide where the routes will go which is given by the tracks.
-- Horizontal track li X 0.23(offset value) 0.46(pitch value). Each tracks are spaced 0.46 to eachother.
+- Horizontal track li `X 0.23(offset value) 0.46(pitch value)`. Each tracks are spaced *0.46um* to eachother.
 - Similarly for the vertical track. This is there for every metal layer.
 - Ports are on the li metal layer.
 - Will converge the grid with the track value to verify if the ports are on the intersection of horizontal and vertical track.
 - Set the grid parameters according to the track dimensions.
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/d4f70757-d7c1-4fb4-be3e-169789244e9e">	
+	
+	
 - Routing of li layer can happen with the help of those grids.
 - The input and output ports are along the horizontal and vertical intersection
 <p align="center"> 
@@ -1333,7 +1347,7 @@ Data Arrival TIme < Data Required Time.
 For eg: width 
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/50861e29-e027-4e2a-9891-8a34325ab09e">
--  In layout there are no ports. Port defination are required only for extracting the .lef files. Ports are defined as pins of the .mag file.
+-  In layout there are no ports. Port defination are required only for extracting the `.lef` files. Ports are defined as pins of the `.mag` file.
 	
 -  Give the cell a custom name by 
 <p align="center"> 
@@ -1342,29 +1356,29 @@ For eg: width
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/522d2d9e-d5be-45c6-8ef9-533294c74191">
 
-- Extraction of .lef file
+- Extraction of `.lef` file
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/6b7e964e-83dc-4246-a935-bfc5480473bd">
 	
 	
-- Port enable checkbox creates a pin in .lef file
+- Port enable checkbox creates a pin in `.lef` file
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/511256ca-e87d-4204-91ed-b11e94a31cfc">
 
 #### Introduction to timing libs and steps to include new cell in synthesis
 
-- Move all the files in src folder of design picorv32a.
+- Move all the files in `src` folder of design `picorv32a`.
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/79693c53-9fd9-4c9f-b3a6-aca585f589f3">
 
-- We have to ensure the abc flow maps the netlist to the library.
+- We have to ensure the `abc` flow maps the netlist to the library.
 - There are 3 lib files.
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/ec604473-3f01-46ab-8ccd-4b7139e6d7e0">
 	
-- Typical lib file (tt)
-- Slow lib file (ss)
-- Fast lib file (ff)
+- *Typical lib file (tt)*
+- *Slow lib file (ss)*
+- *Fast lib file (ff)*
 	
 	
 	Defined for different temperature and different voltage values. We will require these libraries for STA analysis.
@@ -1376,7 +1390,7 @@ For eg: width
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/5ed74f1b-84ed-4aae-85e8-8270b39a046f">
 
 	
-- We need to modify the config.tcl inside designs folder.
+- We need to modify the `config.tcl` inside designs folder.
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/f05cdcf9-504e-4020-ae05-ee8923645455">
 
@@ -1387,7 +1401,7 @@ For eg: width
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/ae882c7b-cdfa-4311-b480-34c9bcb8b806">
 	
-run_synthesis
+`run_synthesis`
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/ae882c7b-cdfa-4311-b480-34c9bcb8b806">
 	
@@ -1400,10 +1414,10 @@ run_synthesis
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/eec879aa-e49e-4ee9-96e2-abe3209415a5">
 	
--  wns has the worst slack.
+-  `wns` has the worst slack.
 -  Need to balance between delay and area.
--  Chip area : 147712.918400
--  Buffering - Buffering is for high fan out rates.Sizing and buffering is been enabled.If fanout is high it needs more driving strength.
+-  `Chip area : 147712.918400`
+-  **Buffering** - Buffering is for high fan out rates.Sizing and buffering is been enabled.If fanout is high it needs more driving strength.
 
 
 <p align="center"> 
@@ -1412,7 +1426,7 @@ run_synthesis
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/5c991caf-4677-4815-a76e-de9b3cb21381">
 
 
--  After synthesis we perform run_floorplan.
+-  After synthesis we perform `run_floorplan`.
 
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/6bf14657-55c4-4594-b69f-4de62aadc2b1">
@@ -1424,7 +1438,7 @@ run_synthesis
 	- global_placement_or
 	- tap_decap_or
 
--  Finally we give the run_placement command. Simultanoeously , we obtain a .def file under our placement folder inside the result.
+-  Finally we give the `run_placement` command. Simultanoeously , we obtain a .def file under our placement folder inside the result.
 -  To view the layout give the command for magic tool.
 
 <p align="center"> 
@@ -1451,14 +1465,14 @@ run_synthesis
 -  Ensure slack is reduced.
 -  In any placement and route, if there are timing violations timing analysis are carried out seperately. Here , placement and route is an openLANE flow and hence, we will be carrying out our timing analysis on openSTA.
 	
--   Inside openLANE folder a file is made for pre_sta.conf which sets the units and has all the library definations. Alongwith this , the verilog file is set here from where we have to read.
+-   Inside `openLAN`E folder a file is made for `pre_sta.conf` which sets the units and has all the library definations. Alongwith this , the verilog file is set here from where we have to read.
 -    Linking of design is done here.
 
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/073de62c-613e-4e0d-833a-00c4928968ae">
 	
--   The src folder consists of the my_base.sdc file.
--   In the typical file there are paratmers set our cell in_8. Modify the my_base.sdc file accordingly to tha parameters in typical.lib
+-   The `src` folder consists of the `my_base.sdc` file.
+-   In the typical file there are paratmers set our cell in_8. Modify the `my_base.sdc` file accordingly to tha parameters in `typical.lib`
 	
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/a7f18864-34b5-4c5b-9441-3d3f31c364c6">
@@ -1468,7 +1482,7 @@ run_synthesis
 	
 #### Steps to run CTS using Triton CTS
 
--  There is always a tradeoff between power,area and timing. Improving one would disturb other. 
+-  There is always a tradeoff between *power,area and timing.* Improving one would disturb other. 
 -  After making modifications for reducing the delay times , we need the openLANE to use the modified netlist .
 -  For this we use the command write_verilog
 	
@@ -1476,12 +1490,12 @@ run_synthesis
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/37810ca0-1092-4274-a608-7b95292560ad">
 
 -  We need to update the file in the synthesis folder.
--  The following command is invoked. This will overwrite the command verilog file
+-  The following command is invoked. This will overwrite the command `verilog file`
 	
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/7d53bc9e-27c9-4e5d-a395-743003690c77">
 
--  To check if the file is overwritten , check in the synthesis folder. Check for the modifcations you made are been displayed here.
+-  To check if the file is overwritten , check in the `synthesis folder`. Check for the modifcations you made are been displayed here.
 
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/ae3a4dbc-b421-4693-b179-dfecb6aa6051">
@@ -1491,7 +1505,7 @@ run_synthesis
 -  Placement an route is an iterative flow.
 
 
--  Next is to perform cts: run_cts 
+-  Next is to perform cts: `run_cts` 
 
 
 <p align="center"> 
@@ -1506,14 +1520,14 @@ run_synthesis
 	
 #### Verify CTS
 
--  Inside the .tcl files there are procs that are defined during the flow. these .tcl commands are inside scripts folder. .tcl commands are created for every step.
--  Procs are similar to functions of a programming language.
+-  Inside the .tcl files there are procs that are defined during the flow. these .tcl commands are inside scripts folder. `.tcl` commands are created for every step.
+-  *Procs* are similar to functions of a programming language.
 -  When we invoke the command for running any step these are the procs that are been called.
 	
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/9ecbe6ea-41bd-4c2a-a6cf-435ee578640f">
 		
--  cts opens openROAD. openROAD is an EDA tool used in openLANE. 
+-  cts opens *openROAD*. openROAD is an EDA tool used in openLANE. 
 -  cts passes control to scripts folder insider openROAD.
 	
 <p align="center"> 
@@ -1524,25 +1538,25 @@ run_synthesis
 	- Placement
 	- Optimization
 	- Global routing
--  Hence , there is no synthesis.tcl file.
+-  Hence , there is no `synthesis.tcl` file.
 
 
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/dc137154-02cb-4946-96ed-5e17067d7341">
 
--  Insider or_cts.tcl. there are few switches.
+-  Inside `or_cts.tcl` there are few switches.
 
 	
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/2b459637-c826-4330-a194-760afc5f2c52">	
 	
 	
--  Running cts will create a cts.def value.
+-  Running cts will create a `cts.def` value.
 	
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/71ed7492-5296-47b3-a653-e10787de5a93">	
 	
--  The picorv32a.cts.def.png file
+-  The `picorv32a.cts.def.png` file
 	
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/1cce5920-ef97-4975-a8d1-aa6488512ed9">	
@@ -1552,7 +1566,7 @@ run_synthesis
 #### Analyse timing with real clocks using openSTA buffers on setup and hold time
 
 
--  openROAD is the part of openLANE and openSTA integrated on openROAD.
+-  *openROAD* is the part of *openLANE* and *openSTA* integrated on openROAD.
 -  Instead of invoking a seperate openSTA tool , we enter into openROAD and do timing analysis as openSTA is already integrated.
 -  As we are inside the openLANE we can now use the env variables.
 -  Objective here is to do analysis of clock tree on the entire circuit.
@@ -1560,20 +1574,20 @@ run_synthesis
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/09a7361a-3d1a-4416-909c-e4d473be9b4b">	
 	
--  Here , timing analysis is done by first creating a db which is created by the /lef and .def file.
--  In our analysis will use this db.
--  First read the db inside the tmp folder. merged.lef
+-  Here , timing analysis is done by first creating a `db` which is created by the `.lef` and `.def file`.
+-  In our analysis will use this `db`.
+-  First read the db inside the tmp folder `merged.lef`
 
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/12b42c16-32b1-4358-a075-6644c8bde20f">	
 	
--  Now , we need to read the def created post cts. This is present in results/cts.
+-  Now , we need to read the `def` created post cts. This is present in `results/cts`.
 	
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/9180a549-5ebd-4eb9-89a4-5ec2fd7823cc">
 	
 	
--  Now , create a db. Give a custom name
+-  Now , create a `db`. Give a custom name
 	
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/7c02210f-8641-4f99-a2b9-e35581d8ce80">
@@ -1583,7 +1597,7 @@ run_synthesis
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/23a65aed-559f-4354-840e-9ae8f23d9729">
 	
-- Read the db. Also read the verilof file.
+- Read the db. Also read the `verilog` file.
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/db7de710-28f7-45b6-a0e5-92c143f49cb4">	
 	
@@ -1592,7 +1606,7 @@ run_synthesis
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/ce1e3f95-f4c2-4eda-ae31-9f936458681f">	
 
--  Read the .sdc file. Use the set propagated clocks to calculate the actual cell delay. And check for the delay.
+-  Read the `.sdc` file. Use the `set_propagated_clocks` to calculate the actual cell delay. And check for the delay.
 
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/c93ee53d-a559-4884-b577-690973f448b2">	
@@ -1607,20 +1621,20 @@ run_synthesis
 	
 #### Execute openSTA with right timing libraries and CTS assignment
 	
--  Triton CTS is built to optimize only according to one corner and we have built the clock tree for typical,min,max corner.
--  We have built clock tree to particular one corner but analysizing typical,min,max hence, this synthesis is not correct.
--  First exit from the openROAD by actually typing **exit**.
+-  *Triton CTS* is built to optimize only according to one corner and we have built the clock tree for typical,min,max cornor.
+-  We have built clock tree to particular one cornor but analysizing typical,min,max hence, this synthesis is not correct.
+-  First exit from the openROAD by actually typing `exit`.
 -  Again open the openROAD and carry the same steps.
 -  Copy the libraries and link the design.
 -  When openROAD is building the CTS it reads the skew value from reading the buffers from left to right.Check the buffer list. 
--  Skew values must be 10% of the maximum clock period
+-  Skew values must be *10% of the maximum clock period*
 
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/0a667173-4622-4c4b-8fdb-ac4edef6f801">	
 
 
--   Syntax: lreplace $::env(folder to be modified) index index.
--   Try to remove the buffer_1. **lreplace** dont show any modifcations. lreplace dont write the changes.
+-   Syntax: `lreplace $::env(folder to be modified)` index index.
+-   Try to remove the *buff_1*. `lreplace` dont show any modifcations. lreplace dont write the changes.
 -   Setup slack time
 	
 <p align="center"> 
@@ -1628,13 +1642,13 @@ run_synthesis
 	
 	
 
--  Hold slack time
+-  **Hold slack time**
 	
 <p align="center"> 
 	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/13ec62be-9452-43bd-8f8c-5847220caac4">
 	
 
--   Run the cts to see the timing modification.
+-   Run the `cts` to see the timing modification.
 	
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/c8767b33-f16e-4830-931f-c6deb342ddad">
@@ -1643,14 +1657,14 @@ run_synthesis
 #### Observe impact of bigger CTS 
 	
 -   The cts flow failed as we had to modify while running the cts for the second time as the def is CTS def is been included. But , we have to take the placement.def file.	
--    Change the .def file.
+-    Change the `.def` file.
 
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/da9c8c20-d019-485d-a60c-52883638c1ea">
 
 
 -  Run the cts again.
--  Again open the openROAD and make a new db as we made changes in the CLOCK_BUFFER_LIST and run the commands again.
+-  Again open the openROAD and make a new db as we made changes in the `CLOCK_BUFFER_LIST` and run the commands again.
 
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/62748dde-af4f-475a-bac6-da2ab947b5ad"> 
@@ -1659,7 +1673,7 @@ run_synthesis
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/d96c453f-6329-4b34-98fe-8e64b3cd496e"> 
 
--   Setup slack time
+-   **Setup slack time**
 	
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/739f8b3f-40fa-46d2-8fda-be277fcf44a4">
@@ -1667,7 +1681,7 @@ run_synthesis
 	
 
 
--  Hold slack time
+-  **Hold slack time**
 	
 <p align="center"> 
 	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/50027d4a-8d4b-4dba-a9af-ceba221ea646">
@@ -1678,7 +1692,7 @@ run_synthesis
 <p align="center"> 
 	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/062393fe-0cd0-4bba-a50f-506d6848d43c">
 
--  Again if we want to add the buff_1 . Use the commant **linsert**
+-  Again if we want to add the *buff_1* . Use the commant `linsert`
 	
 <p align="center"> 
 	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/2b0495f1-157e-4157-b7aa-e1e12543d43c">	
@@ -1698,7 +1712,7 @@ set_propagated_clock (all_clocks)
 report_checks -path_delay min_max -format full_clock_expanded -digits 4
 	
  ## Day 5:
-##RTL to GDSII
+## RTL to GDSII
   
  --- 
  ### Routing and design rule check
@@ -1707,9 +1721,10 @@ report_checks -path_delay min_max -format full_clock_expanded -digits 4
 	
 -  Routing is the best or the shortest possible path with less number of twist and turns between two points 	
 -  Routing tools are based on Lee's Algorithm. For more info on the algorithm, please refer here.	
--  Two stages of Routing: Global and Detailed Routing.	
+-  Two stages of Routing: *Global and Detailed Routing*.	
 	
--  A typical maze route/
+-  A typical maze route:
+	
 <p align="center"> 
 	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/6ae967d8-a1a7-4351-ae61-75f2c6e0176f">		
 
@@ -1795,18 +1810,18 @@ report_checks -path_delay min_max -format full_clock_expanded -digits 4
  --- 
  #### Build Power Distribution Network
 	
--  Invoke the docker again in the openLANE , include the design and prep the design.
--  Check the def file created post the cts run.
+-  Invoke the `docker` again in the openLANE , include the `design` and prep the design.
+-  Check the `.def` file created post the `cts` run.
 <p align="center"> 
 	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/c3a492f7-f61d-44c2-8979-8556e605709f">	
 
--   Power distribution network : The power and the grounf trails.
+-   Power distribution network : The power and the ground trails.
 <p align="center"> 
 	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/1097a6ac-da9a-4579-8643-bd767c372bc8">		
 
--   It reads the .lef,.def files and create straps for power. 
+-   It reads the `.lef`,`.def` files and create straps for power. 
 -   Standard cells must have the power and ground lines.
--   Pdn def file has both the cts def plus the power traps. 
+-   Pdn `.def` file has both the cts def plus the power traps. 
 
 <p align="center"> 
 	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/9cea341b-e10c-4f48-8e35-43964729dda9">		
@@ -1824,9 +1839,9 @@ report_checks -path_delay min_max -format full_clock_expanded -digits 4
 <p align="center"> 
 	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/650bfe65-9736-4f10-b097-2360faede5e0">		
 
-Exctracting SPEC (SPEC extraction is done outside openlane as it does not have SPEC Extractor tool in openlane.
+Exctracting `SPEC` (SPEC extraction is done outside openlane as it does not have SPEC Extractor tool in openlane.
 
--  picorv32a.def.png file generated after routing
+-  `picorv32a.def.png` file generated after routing
 	
 <p align="center"> 
 	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/54aeca0c-3884-4389-bcf7-572d3722b5ad">	
@@ -1835,7 +1850,7 @@ Exctracting SPEC (SPEC extraction is done outside openlane as it does not have S
 	
 Finally do run_magic in the openlane to generate gds file.
 	
--  picorv32a.def.png file generated after routing
+-  `picorv32a.def.png` file generated after routing
 <p align="center"> 
 	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/54aeca0c-3884-4389-bcf7-572d3722b5ad">	
 
@@ -1843,7 +1858,7 @@ Finally do run_magic in the openlane to generate gds file.
 	
 run_magic
 	
--   A GDSII file is generated
+-   A `GDSII` file is generated
 
 <p align="center"> 
 	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/eff3b4e8-c9d2-4e52-bfc8-2b384c9adc4a">	
