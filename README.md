@@ -334,13 +334,13 @@ Efabless has a family of SoCs striVe where there is openpdk,openeda,openrtl.
 <p align="center"> 
    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/fed0d90c-5700-430f-aa03-18d0324ae6ab">	 
 	
-	
-	-  `Skywater-pdk`: has all pdk related files eg, timing libraries, lef files,tech lef,etc.
-	-  `open_pdks`:Silicon foundary files are made to work with the commercial EDA tools and not open source. Open_pdks help in mitigating the problem . There are sets of scripts and files that convert these foudnary level pdks to be compatible with open source tools.
-	-  `sky130A:pdk` which is made compatible to work with open source environment. It has libs.tech and libs.ref subdirectories.
-			1.	libs.ref: All process/ technology related files like timing , cell lef,tech lef , etc. We will be woking on the pdk variant – 
-***sky130_fd_sc_hd***.		
-	-	`sky-process name   fd-foundary  sc-standard cell  hd-high density`
+- Some commands above.	
+	-   `src` : source. RTL  and SDC information will be present here.
+	-   `Skywater-pdk` : has all pdk related files eg, timing libraries, lef files,tech lef,etc.
+	-   `open_pdks` : Silicon foundary files are made to work with the commercial EDA tools and not open source. Open_pdks help in mitigating the problem . There are sets of scripts and files that convert these foudnary level pdks to be compatible with open source tools.
+	-   `sky130A` :pdk which is made compatible to work with open source environment. It has libs.tech and libs.ref subdirectories.
+			1.	libs.ref: All process/ technology related files like timing , cell lef,tech lef , etc. We will be woking on the pdk variant ***sky130_fd_sc_hd***.		
+	-   `sky-process name   fd-foundary  sc-standard cell  hd-high density`
 	
 <p align="center"> 
    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/9c1e4211-7dde-43b7-b8cc-72c57c098b09">		 
@@ -372,7 +372,7 @@ Efabless has a family of SoCs striVe where there is openpdk,openeda,openrtl.
 
 	
 
--	The designs required to run on the OpenLANE are been extracted from the designs directory under `openlane`. There are about 30-40 designs already built in openlane , here we can also built our design.	
+-	The designs required to run on the OpenLANE are been extracted from the `designs` directory under `openlane`. There are about 30-40 designs already built in openlane , here we can also built our design.	
 	
 <p align="center"> 
    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/4b6d663a-e620-40a1-8d2f-130f5f13d6b6">	
@@ -386,7 +386,7 @@ Efabless has a family of SoCs striVe where there is openpdk,openeda,openrtl.
 <p align="center"> 
    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/69901dd9-03da-4962-ba62-e2104ed3ff86">	
 	
-` **less config.tcl** `
+` less config.tcl `
 <p align="center"> 
    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/3d0ee9f8-bab5-417a-b742-ec5640601f96">	
 	
@@ -396,7 +396,7 @@ Efabless has a family of SoCs striVe where there is openpdk,openeda,openrtl.
 	2	config.tcl
 	1	sky130A_sky130_fd_sc_hd_config.tcl – highest precedence
 -	Before synthesis it is desirable to prepare the design setup that would set data structure for the design. It is necessary to set the file system specific to the flow
-	-	Command :` **prep –design picorv32a** `
+	-	Command :` prep –design picorv32a `
 	-	`mergeLef.py : merge the cell lef and tech lef files`
 
 <p align="center"> 
@@ -405,18 +405,18 @@ Efabless has a family of SoCs striVe where there is openpdk,openeda,openrtl.
 
  #### Review files after design prep and run synthesis
 -	Check if anything new created in design library. *Runs* directory is created with the current working date.
--	**config.tcl:** Tells about the default parameters that will be taken by the run
+-	`config.tcl:` Tells about the default parameters that will be taken by the run
 <p align="center"> 
    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/96008773-99c0-48a1-b0b3-1af4c5d63469">
 
-` *merged.lef files:* `
-1. ` **tech.lef** ` 	
+*merged.lef files:*
+1. `tech.lef` 	
 	
 <p align="center"> 
    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/00727df0-8357-41cc-99b5-eb580a4ce940">
 
 	
-2. ` **cell.lef** `
+2. `cell.lef`
 	
 <p align="center"> 
    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/13436f9f-18bb-447f-bbeb-1e5b5660b714">
@@ -424,7 +424,7 @@ Efabless has a family of SoCs striVe where there is openpdk,openeda,openrtl.
 	
 
 -	One good thing about openLANE is that changes can be made on the flight . Making changes in the original file the number will be updated on the config.tcl file
--	Running the synthesis : run_synthesis. This will run the abc and yosys synthesis.
+-	Running the synthesis : `run_synthesis`. This will run the abc and yosys synthesis.
 
 
 <p align="center"> 
@@ -445,7 +445,7 @@ Efabless has a family of SoCs striVe where there is openpdk,openeda,openrtl.
 	
 
 **Flop count = 0.1084 = 10.84%**
--	Check the results and reports in the runs folder. Check under synthesis.
+-	Check the `results` and `reports` in the `runs` folder. Check under **synthesis**.
 
 <p align="center"> 
    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/9d78edc9-ee5f-47ea-bf85-4253febc2c5a">	
@@ -491,8 +491,9 @@ Consider a basic netlist of 2 flip flops :- Launch flop(Left one) and the captur
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/501465c3-4729-46ad-a8d3-a11784543f6e">
 
 
-Core:Section of the chip where the fundamental logic of design is placed
-Die:Consists of core , a small semiconductor material specimen on which the fundamental circuit is fabricated
+**Core:** Section of the chip where the fundamental logic of design is placed
+	 
+**Die:** Consists of core , a small semiconductor material specimen on which the fundamental circuit is fabricated
    
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/ce558824-0a4a-4bd3-9c2e-3a7913dc0198">
@@ -511,7 +512,7 @@ Placing all the logic cells inside the core . The logical cell occupies all the 
  #### Concept of pre placed cells
   
   
-*Preplaced cells:* Combinational logic undergoes a simple digital logic .The output of combinational logic can consist of huge gates. We can divide the circuit logic for further simplification  and can be separated into two different blocks. The individual blocks can be made to work when needed. Both the blocks can be implemented seperately.
+**Preplaced cells:** Combinational logic undergoes a simple digital logic .The output of combinational logic can consist of huge gates. We can divide the circuit logic for further simplification  and can be separated into two different blocks. The individual blocks can be made to work when needed. Both the blocks can be implemented seperately.
   
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/0689a587-e8b3-4d08-9419-64023e9d0c2a">
@@ -677,17 +678,26 @@ Library consists of also shapes and sizes. Bigger in size least resistance path 
 	 
 	
 
--	Design steps: Designing the component. Developer takes the input and comes with the library cell that adheres to the inputs. 
-  -	Circuit design:Typically involves involves implementing the function and model the transistors to meet the library requirements. Output we get from here is a circuit description language.
-  -	Layout design:a. Implementing the values into a layout.
-                  b. Get Function Implement by the transistors
+-	**Design steps:** Designing the component. Developer takes the input and comes with the library cell that adheres to the inputs. 
+  -	**Circuit design:** Typically involves involves implementing the function and model the transistors to meet the library requirements. Output we get from here is a circuit description language.
+  -	**Layout design:**
+	 
+	 	  a. Implementing the values into a layout.
+	 
+                  b. Get Function Implement by the transistors.
+	 
                   c. Get PMOS  and NMOS network graph out of the design. Euler’s path and stick diagram.
+	 
                   d. Obtain Euler’s path: traced only once.
+	 
                   e. Convert stick diagram into layout athering to the DRC rules and user defined specifications.
+	 
                   f. Hand drawn layout into a tool (eg magic tool i.e opensource tool).
+	 
                   g. Extract parasitic and characterize it in terms of timing.
-  -	Characterization:Timing , noise and power information . 
--	Output : Output of the component actually used by the EDA tool. CDL , GDSII , LEF , extracted SPICE netlist
+	 
+  -	**Characterization:** Timing , noise and power information . 
+-	**Output:**  Output of the component actually used by the EDA tool. CDL , GDSII , LEF , extracted SPICE netlist
  
 *Characterization:*
 Layout , description and spice extracted netlist of the component. There is sub circuits consisting of transistor definations.
@@ -720,9 +730,9 @@ c.	Noise characterization
  #### Timing threshold definations
   
 -	Understanding different threshold  points of a waveform.
-    -	Slew_low_rise_thr: close to 0 power supply . Toc calculate the slew we need two different points. Typical value is 20%.
-    -	Slew_high_rise_thr: 20% point from top power supply .
-    -	Slew_low/high_fall_thr: Similar like the above.
+    -	`Slew_low_rise_thr`: close to 0 power supply . Toc calculate the slew we need two different points. Typical value is 20%.
+    -	`Slew_high_rise_thr`: 20% point from top power supply .
+    -	`Slew_low/high_fall_thr`: Similar like the above.
 -	We need the above values to calculate the skews of the waveform.
 -	In the transient analysis definations related to the input in the waveform: in_rise_thr,in_fall_thr,out_rise_thr,out_fall_thr- thresholds for the delays. To calculate delays of the particular inverters. 50% values.
 
@@ -732,8 +742,8 @@ c.	Noise characterization
 	
 #### Propogation delay and transistion time
   
-- Propogation delay: time out threshold-time in-threshold = delay of the buffer.
-- Transistion time: time(slew_high_rise_thr)-time(slew_low_rise_thr) or time(slew_high_fall_thr)-time(slew_low_fall_thr)
+- **Propogation delay:** time out threshold-time in-threshold = delay of the buffer.
+- **Transistion time:** time(slew_high_rise_thr)-time(slew_low_rise_thr) or time(slew_high_fall_thr)-time(slew_low_fall_thr)
 
   --- 
  ### LAB : Get Familiar to open source EDA tools
@@ -750,7 +760,7 @@ c.	Noise characterization
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/9e1d1cb6-8331-41f4-b6fd-c7e9da46586b">
 	
 
--	Open the *README.md* file . There are variables(switches) required for each stage.
+-	Open the `README.md` file . There are variables(switches) required for each stage.
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/67979df1-c794-45a3-b083-bd472fd02c6b">
 
@@ -761,21 +771,23 @@ c.	Noise characterization
 	
 
 -	We can set the parameters according to the flow. Because it might happen that we require certain parameters at certain time hence, we can keep the others undisturbed.
--	*Target density(PL_TARGET_DENSITY)* states how close or how spread you want ypur cells to be . 1-closely packed 0-widely spread.. Preferable is to set it to 0 as we have to d conjestion analysis and timing constraints are to be met.
+-	*Target density* ` (PL_TARGET_DENSITY) ` states how close or how spread you want ypur cells to be . 1-closely packed 0-widely spread.. Preferable is to set it to 0 as we have to d conjestion analysis and timing constraints are to be met.
 -	Open the **floorplan.tcl** in configuration , you will see the parameters that are default set in openlane.
 
 	
 <p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/aef6dacc-0bca-4bff-825d-a04e368c7323">		
--       **(FP_IO_MODE):** Tells about how we want the pin configuration. 1- randomly but equidistant  0-not equidistant
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/aef6dacc-0bca-4bff-825d-a04e368c7323">	
+	
+` (FP_IO_MODE):` Tells about how we want the pin configuration. 1- randomly but equidistant  0-not equidistant
+	
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/aef6dacc-0bca-4bff-825d-a04e368c7323">
 	
 	
 -	Precedance of the settings is
-	3.floorplan.tcl: 
-	2.config.tcl : the horizontal and vertical metal layers here are one more than in the
-        1.sky130A sky130_fd_sc_hd_config.tcl – highest
+	- `floorplan.tcl`  - lowest
+	- `config.tcl` the horizontal and vertical metal layers here are one more than in the
+        - `sky130A sky130_fd_sc_hd_config.tcl` – highest
 
 	
 -	Finally run the floorplan **run_floorplan**
@@ -791,11 +803,11 @@ c.	Noise characterization
 -	Check whether the switches in config.tcl take precedence over system defaults.
 -	Config.tcl file inside the runs directory tells about all the conifiguration taken by the floor.
 -	To check the values of HMetal/VMetal go into the floorplan directory inside logs in runs. 
--	Go in **-ioPlacer.log**
+-	Go in ` -ioPlacer.log `.
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/5c6d6ef5-7e77-4615-9997-25b434b5d4cc">
 
-- 	Values are overwritten by pdk config.tcl
+- 	Values are overwritten by pdk `config.tcl`
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/6aec93bd-b638-4678-8c52-e8c421669821">	
 	
@@ -809,7 +821,7 @@ c.	Noise characterization
 	
 
 	
-*Die area(Area of whole die) : (lower left x value    lower left y value)(upper right x value    upper right y value)*
+Die area(Area of whole die) : (lower left x value    lower left y value)(upper right x value    upper right y value)
 Unit is set above (displayed in the image)  . Therefore , the database is unit/micron.
 
 	
@@ -817,9 +829,9 @@ Unit is set above (displayed in the image)  . Therefore , the database is unit/m
 	
 #### Review floorplan layout in magic
 	
-- To look at the actual layout after program. magic –T <directory of the tech file>.T for tech file. 
-- **lef** file will be taking here is the merged.lef file.
-- & - free ups the prompt when magic launches	
+- To look at the actual layout after program. `magic –T` <directory of the tech file>.**T** for tech file. 
+- `lef` file will be taking here is the merged.lef file.
+- **&** - free ups the prompt when magic launches	
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/478d89a6-6715-4b49-a066-6b18e9a7c997">
 
@@ -828,9 +840,9 @@ Unit is set above (displayed in the image)  . Therefore , the database is unit/m
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/ac23f1f3-367c-46f0-8b01-ee1b8fa5d6b0">	
 	
--	Select the entire layout by pressing **s(( and then to centre align press **v**.
--	To zoom into a particular portion of the layout  press left mouse button then the right and then click z.
--	To select a particular cell , hover your pointer on the cell and press s – the cell or pin will be selected.
+-	Select the entire layout by pressing `s` and then to centre align press `v`.
+-	To zoom into a particular portion of the layout  press left mouse button then the right and then click `z`.
+-	To select a particular cell , hover your pointer on the cell and press `s` – *the cell or pin will be selected*.
 -	We had set the input output pins to 1 which tells they are equidistant.
 
 <p align="center"> 
@@ -838,18 +850,18 @@ Unit is set above (displayed in the image)  . Therefore , the database is unit/m
 
 
 
--	Go on the tkcon window and enter what. It shows the layer on which the pin is in.
+-	Go on the `tkcon` window and enter what. It shows the layer on which the pin is in.
 -	Similarly this can be done for vertical pins.
 
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/463c19de-7873-4d3a-9e9f-29126097c543">
 
--	There are d cap cells arranged along the side row
+-	There are **d cap** cells arranged along the side row
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/f5f2ab65-f95a-4afe-a40a-461f03573abc">	
 
 	
--	There are tap cells meant to avoid latch conditions in the CMOS devices like preventing substrate to the ground.They are diagonally equidistant which was already stated in the README 
+-	There are tap cells meant to avoid latch conditions in the CMOS devices like preventing substrate to the ground.They are diagonally equidistant which was already stated in the `README` 
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/04ec2204-8cc5-494f-8b5c-b821d3f0ee7f">
 	
@@ -862,21 +874,20 @@ Unit is set above (displayed in the image)  . Therefore , the database is unit/m
 
 	
 	
-####Congestion aware placement using RePlAce	
+#### Congestion aware placement using RePlAce	
 - Post floorplan is the placement stage that happens in 2 stages:
 	1. Global Placement: Forced placement. No legalizations. Legalization means standard cells should be exactly under the standard cell rows without any overlaps.Reduces the wire length.
 	2. Detailed Placement:
 	
-- **run_floorplan**
-<p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/bfa4e9f5-18b7-4b3b-8ca3-e3c8995ead6e">	
+- `run_floorplan`
+	
 - We have to converge the overflow.
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/67c6167c-1939-4f91-9aaa-96c7fae70845">
 	
 
--To see the design post placement . Go into placement folder of results. A def file will be created.
-- Enter the command for magic view.
+-  To see the design post placement . Go into placement folder of results. A def file will be created.
+-  Enter the command for magic view.
 
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/c8da775b-9d29-4ff4-8ea7-04b49cbdb6a4">		
