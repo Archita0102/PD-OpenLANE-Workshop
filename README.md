@@ -1160,18 +1160,47 @@ After splitting the buffers.
 Buffers on the same level must have same capacitive load to ensure same timing delay or latency on the same level. It means that each buffer at the same level is having same load.
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/a23f5c01-5da4-4f1c-ac84-e93acef9fb5">
+
 Solution was to bring *Delay tables*
+	
 - 2D table 
 - With varying input transistons and output load the delay table was characterized .
 - The timing model of each cell is recorded and is summarised in delay tables, which are part of the liberty file. The output slew is the main cause of delay.
+
 
 #### Delay tables usage
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/65c0f21e-35a7-4ebc-8a7b-9c1cc426cd6c">
 -  Fill up the value of input transistion , fill up the value of output load and get corresponding delay.
+-  Capacitive load and input slew are also factors that affect output slew. The input slew has its own transition delay table and is a function of the previous buffer's output cap load and input slew.
 
 
+	
+--- 
+ ### Timing analysis with ideal clocks using openSTA
+ --- 
+ #### Setup timing analysis and introduction to flip-flop setup time
+ 
+Setup Time Analysis:
+	
+-  One edge of the clock is sent to launch flop and the other is sent to the capture glop.
+-  The combinational delay should be less than the time period. If combinational delay is more the frequency reduces and the clock is shifted.
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/1a5dab3b-6c1a-4dc5-bfbc-48d52bfd4a36">	
+	
+-   Inside the flop there are combinational circuits with their own time delays.
+-   Consider there are multiplexers at both the flops.
+-   The delays through multiplexers restrict the combinational delay requirement.
+=   Hence , capture clock requires a finite amount of time to settle. So this amount of time has to be seperated from the complete clock period
+-   Setup time:	Time required for the capture flop to settle and display the output .
 
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/600ccb47-e264-4125-88bd-19b331923ac6">
+
+
+	
+	
   --- 
  ### LAB : Timing modelling using delay tables
  --- 
@@ -1558,7 +1587,19 @@ run_synthesis
 <p align="center"> 
 	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/2b0495f1-157e-4157-b7aa-e1e12543d43c">	
 
- 
+ - Commands for openROAD 
+	
+openroad
+write_db pico_cts.db
+read_db pico_cts.db
+read_verilog /openLANE_flow/designs/picorv32a/runs/03-07_11-25/results/synthesis/picorv32a.synthesis_cts.v
+read_lef /openLANE_flow/designs/picorv32a/runs/03-07_11-25/tmp/merged.lef
+read_def /openLANE_flow/designs/picorv32a/runs/03-07_11-25/results/cts/pico32a.cts.def
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+link_design picorv32a
+read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+set_propagated_clock (all_clocks)
+report_checks -path_delay min_max -format full_clock_expanded -digits 4
 	
 ## Day 5:
 	
