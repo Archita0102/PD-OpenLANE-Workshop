@@ -1201,6 +1201,63 @@ Setup Time Analysis:
 
  #### Introduction to clock jitter and uncertainity	
 	
+- *Jitter:* Clock signal has to be sent at regular time intervals of 0.T.2T... but ,due to wires and other delays so we dont receive a clock edge at a defined time period. Clock has its own variations. So the signal might gel delayed or arrive early. This temporary variation of clock is called to be jitter.
+	
+-  Clubbing the uncertainty of the clock now the time period has to be less than the previous setup + uncertainty time.
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/0caac8b9-3a75-46d1-bf75-8ddf42d167bb">
+	
+--- 
+ ### Clock tree synthesis using Triton-route and signal integrity
+ --- 
+ #### Clock tree routing and buffering
+
+-  Time required for clock to reach flip flop 1 is t1 and to reach flip flop 2 is t2.
+-   Difference between both the time is skew. Skew should be as minimum as possible.
+	
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/fed8cb39-dd31-4727-bac8-c2aeb38f0347">
+	
+-  We wont get zero skew using this route. 
+-  Edge Tree: Takes a particular clock. Calculates the distance till the flip flops and build a tree. this reduces the time difference between them.
+	
+-  This clock tree has some wires that carry resistance within them.Hence, there will be many ytransistions on the path and we wont get the signal at the output that we want to obtain. So we add repeaters. The repeaters will have similar rise and fall time.
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/2ae02f50-c672-4bf9-b8ae-728b6bc3e119">
+		
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/24e50019-1613-409a-a947-49782c44f7f7">
+
+
+
+ #### Crosstalk and clock net shielding
+	
+-  Clock nets are critical as we have built clock tree with zero skew.
+-  But , there might be chances of crosstalk that may detoriate the singal.
+-  Clock nets are shielded hence , they are protected from the outside connections.
+-  There can be two problems of glich and delta delay.	
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/144ee52f-646e-4817-8f51-9bc71c1c5605">
+
+L1 and L2 are latency.
+- Because of crosstalk there will be some delay. Due to some gltich there will be some delta delay caused.
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/3d409bb5-cd55-4ea1-aa85-37d47506a5db">	
+	
+	
+
+	
+--- 
+ ### Timing analysis with ideal clocks using open STA
+ --- 
+ #### Setup and Hold Timing analysis
+	
+	
+	
+	
   --- 
  ### LAB : Timing modelling using delay tables
  --- 
