@@ -1339,8 +1339,216 @@ run_synthesis
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/a7f18864-34b5-4c5b-9441-3d3f31c364c6">
 
 
+	
+	
+#### Steps to run CTS using Triton CTS
+
+-  There is always a tradeoff between power,area and timing. Improving one would disturb other. 
+-  After making modifications for reducing the delay times , we need the openLANE to use the modified netlist .
+-  For this we use the command write_verilog
+	
 <p align="center"> 
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/073de62c-613e-4e0d-833a-00c4928968ae">
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/37810ca0-1092-4274-a608-7b95292560ad">
+
+-  We need to update the file in the synthesis folder.
+-  The following command is invoked. This will overwrite the command verilog file
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/7d53bc9e-27c9-4e5d-a395-743003690c77">
+
+-  To check if the file is overwritten , check in the synthesis folder. Check for the modifcations you made are been displayed here.
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/ae3a4dbc-b421-4693-b179-dfecb6aa6051">
+
+	
+-  We will run the floorplan again which will be taking the new netlist.
+-  Placement an route is an iterative flow.
+
+
+-  Next is to perform cts: run_cts 
+
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/28e76784-8fd1-4cb5-8ec1-05a38a8e8d1f">
 	
 	
-#### Optimize synthesis to reduce setup violations
+-  The clock buffers are added here and we get a new verilog file with new netlist
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/a4e6a686-0c9e-45ab-b72d-4d2bff23d4cd">
+	
+	
+#### Verify CTS
+
+-  Inside the .tcl files there are procs that are defined during the flow. these .tcl commands are inside scripts folder. .tcl commands are created for every step.
+-  Procs are similar to functions of a programming language.
+-  When we invoke the command for running any step these are the procs that are been called.
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/9ecbe6ea-41bd-4c2a-a6cf-435ee578640f">
+		
+-  cts opens openROAD. openROAD is an EDA tool used in openLANE. 
+-  cts passes control to scripts folder insider openROAD.
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/d8a99d2c-4e2b-4821-9750-a4fc53226186">
+
+-  openROAD carries out the following processes.
+	- Floorplanning
+	- Placement
+	- Optimization
+	- Global routing
+-  Hence , there is no synthesis.tcl file.
+
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/dc137154-02cb-4946-96ed-5e17067d7341">
+
+-  Insider or_cts.tcl. there are few switches.
+
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/2b459637-c826-4330-a194-760afc5f2c52">	
+	
+	
+-  Running cts will create a cts.def value.
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/71ed7492-5296-47b3-a653-e10787de5a93">	
+	
+-  The picorv32a.cts.def.png file
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/1cce5920-ef97-4975-a8d1-aa6488512ed9">	
+
+
+
+#### Analyse timing with real clocks using openSTA buffers on setup and hold time
+
+
+-  openROAD is the part of openLANE and openSTA integrated on openROAD.
+-  Instead of invoking a seperate openSTA tool , we enter into openROAD and do timing analysis as openSTA is already integrated.
+-  As we are inside the openLANE we can now use the env variables.
+-  Objective here is to do analysis of clock tree on the entire circuit.
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/09a7361a-3d1a-4416-909c-e4d473be9b4b">	
+	
+-  Here , timing analysis is done by first creating a db which is created by the /lef and .def file.
+-  In our analysis will use this db.
+-  First read the db inside the tmp folder. merged.lef
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/12b42c16-32b1-4358-a075-6644c8bde20f">	
+	
+-  Now , we need to read the def created post cts. This is present in results/cts.
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/9180a549-5ebd-4eb9-89a4-5ec2fd7823cc">
+	
+	
+-  Now , create a db. Give a custom name
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/7c02210f-8641-4f99-a2b9-e35581d8ce80">
+	
+-  Verify whether the db has been created.
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/23a65aed-559f-4354-840e-9ae8f23d9729">
+	
+- Read the db. Also read the verilof file.
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/db7de710-28f7-45b6-a0e5-92c143f49cb4">	
+	
+-  Read the library 
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/ce1e3f95-f4c2-4eda-ae31-9f936458681f">	
+
+-  Read the .sdc file. Use the set propagated clocks to calculate the actual cell delay. And check for the delay.
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/c93ee53d-a559-4884-b577-690973f448b2">	
+
+-  The slack is	incremented.
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/79d63e35-919c-44ee-9e0b-3949744cf74c">	
+
+
+
+	
+#### Execute openSTA with right timing libraries and CTS assignment
+	
+-  Triton CTS is built to optimize only according to one corner and we have built the clock tree for typical,min,max corner.
+-  We have built clock tree to particular one corner but analysizing typical,min,max hence, this synthesis is not correct.
+-  First exit from the openROAD by actually typing **exit**.
+-  Again open the openROAD and carry the same steps.
+-  Copy the libraries and link the design.
+-  When openROAD is building the CTS it reads the skew value from reading the buffers from left to right.Check the buffer list. 
+-  Skew values must be 10% of the maximum clock period
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/0a667173-4622-4c4b-8fdb-ac4edef6f801">	
+
+
+-   Syntax: lreplace $::env(folder to be modified) index index.
+-   Try to remove the buffer_1. **lreplace** dont show any modifcations. lreplace dont write the changes.
+-   Setup slack time
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/76d145b3-1fe8-4197-af55-a33b3ef03a37">
+	
+	
+
+-  Hold slack time
+	
+<p align="center"> 
+	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/13ec62be-9452-43bd-8f8c-5847220caac4">
+	
+
+-   Run the cts again to see the timing modification.
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/c8767b33-f16e-4830-931f-c6deb342ddad">
+	
+-   The flow failed as we had to modify while running the cts for the second time as the def is CTS def is been included. But , we have to take the placement.def file.	
+-    Change the .def file.
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/da9c8c20-d019-485d-a60c-52883638c1ea">
+
+
+-  Run the cts again.
+-  Again open the openROAD and make a new db as we made changes in the CLOCK_BUFFER_LIST and run the commands again.
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/62748dde-af4f-475a-bac6-da2ab947b5ad"> 
+
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/d96c453f-6329-4b34-98fe-8e64b3cd496e"> 
+
+
+
+
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/0a667173-4622-4c4b-8fdb-ac4edef6f801">
+#### Observe impact of bigger CTS 
+	
+
+	
+	
+## Day 5:
+	
+	
+ --- 
+ ### LAB : Power Distribution Network and Routing
+ --- 
+ #### Build Power Distribution Network
+	
+	
+ #### Power straps to standard cell power
+	
+	
