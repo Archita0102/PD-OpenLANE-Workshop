@@ -51,9 +51,9 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
  --- 
  ### How to talk to computers 
  --- 
- #### Introduction to QFN-48 package , cjip , pads,core,dir and IPs  
+ #### Introduction to QFN-48 package , chip , pads,core,dir and IPs  
  
- This workshop we will be trying to talk more about the industry behind the chip highlighted which is the processor
+ This workshop we will be trying to talk more about the industry behind the chip which is the processor
  
  <p align="center"> 
       <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/b154a5a6-dc07-487c-884b-1156cc5c2ff7"> 
@@ -82,12 +82,15 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
  - Chip is in the centre of the package and is connected to the other pins via wirebonds. This is how signal is tranferred from outside to the internal of the chip.
  - Figure 3 shows the chip internal circuit consisting of various components.
       
-      ***Pads***: send signal inside the chip
       
-      ***Core***: digital logic is placed here
+	
+      Pads: send signal inside the chip
       
-      ***Die***: size of the entire chip THAT GETS MANUFACTURED ON THE SILICON WAFER
-
+      Core: digital logic is placed here
+      
+      Die: size of the entire chip THAT GETS MANUFACTURED ON THE SILICON WAFER`
+	
+	
 <p align="center"> 
    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/f8d33a05-00ce-46a8-87ae-a3085b0c70f0"> 
   
@@ -155,9 +158,9 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
  
 
    
- 1. *RTL Designs(Register Transfer Level):* There are many open source RTL designs present some of them are librecores.org , opencores.org , github.com. 
- 2. *EDA Tools(Electronic Design Automation):* Spicesimulatot, sis ,magic . Nowadays we have academic tools like Qflow , OpenROAD, OpenLANE. 
- 3. *PDKs Data*(Process Design Kits):* It is a collection of files used to model a fabrication process for EDA tools to design an IC. Skywater 130 nm + Google pdk is opensource PDK.
+ 1. **RTL Designs(Register Transfer Level):** There are many open source RTL designs present some of them are librecores.org , opencores.org , github.com. 
+ 2. **EDA Tools(Electronic Design Automation):** Spicesimulatot, sis ,magic . Nowadays we have academic tools like Qflow , OpenROAD, OpenLANE. 
+ 3. **PDKs Data*(Process Design Kits):** It is a collection of files used to model a fabrication process for EDA tools to design an IC. Skywater 130 nm + Google pdk is opensource PDK.
    
  <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/7d0b478f-6b99-4df8-9419-cee28494d11d">
@@ -174,7 +177,7 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
 
 
   
- 1.*Synthesis* 
+ 1.**Synthesis** 
  - The RTL design is converted into a circuit out of components from the standard cell library.
  - Result is the gate level netlist that is functional equivalent to an RTL.  
  - Standard cells have a fixed regular layout of fixed height and variable width. 
@@ -186,7 +189,7 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
  
 
 
- 2.*Floor and Power Planning* 
+ 2.**Floor and Power Planning** 
  - Here the objective is to plan the silicon area and create robust power distribution. 
    1. Chip floor planning: Chip die is position between different chip positions.
    2. Macro floor planning: Defining the micro dimensions and its pin locations. Also the row definition
@@ -195,7 +198,7 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
 
 
  
- 3.*Placements* 
+ 3.**Placements** 
  - Placing the gate level netlist on the vertical rows and must be placed close to eachother to reduce the interconnect delay and to enable successful routing . 
  - Cell placements are done 2 steps:  
    1.	Global placement: Global placement have to find optimum positions that may not be legal and hence cells may overlap on eachother.
@@ -207,7 +210,7 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
 
   
 
- 4.*Clock Tree Synthesis (CTS)* 
+ 4.**Clock Tree Synthesis (CTS)** 
  - Creating a clock distribution network before routing. Delivering clock to all sequential elements . 
  - Clock network is like tree where clock source is root and clock elements entity. Minimum skew and minimum latency . 
  - Skew means arrival of clock at different components at different times.
@@ -218,7 +221,7 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
 
   
 
- 5.*Routing* 
+ 5.**Routing** 
  - In given placement and fixed number of metal layers is require to find a valid pattern of horizontal and veritical wires to implement the nets that connects the cells together. 
  - The router uses the metal layers as defined by the pdk . pdk defines the thickness,pitch , track and minimum width.
  - The skywater pdk defines 6 routing layers. Thw lowest one is called local interconnect layer which is titanium nitride layer.The following five are aluminium layers. 
@@ -232,7 +235,7 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
 
 
   
- 5.*Sign-off* 
+ 5.**Sign-off** 
  - Now we can construct a final layout after routing which undergoes  
      1.Physical verifications:
         a. 	Design Rules checking: It makes sure the final layout undergoes all design rules. 
@@ -242,7 +245,7 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
 
   
  #### Introduction to OpenLANE and strive objects 
- Using OenSOURCE tools the problem is tougher. We need to take care about
+ Using OpenSOURCE tools the problem is tougher. We need to take care about
   a.	Tools Qualification
   b.	Tools Calibaration
   c.	Missing tools
@@ -293,11 +296,11 @@ Efabless has a family of SoCs striVe where there is openpdk,openeda,openrtl.
 -	***DFT(Design for Test)*** also add the data controller which enables the external access to the internal structure.
 -	Now comes the physical implementation that consists of several steps and all are done by openroad app. We used openroad app for
 	 - Floor/Power Planning
-   - End Decoupling Capacitors and Tap cells insertion
-   - Placement: Global and Detailed
-   - Post placement optimization
-   - Clock Tree Synthesis (CTS)
-   - Routing: Global and Detailed
+   	 - End Decoupling Capacitors and Tap cells insertion
+         - Placement: Global and Detailed
+         - Post placement optimization
+         - Clock Tree Synthesis (CTS)
+         - Routing: Global and Detailed
   
 -	To perform optimization which enforce subtransformation of the gate level netlist generated by synthesis step we need to perform logic equivalence checking which can be done using yosys.
 -	We compare the netlist from optimisation to the gate level netlist from the synthesis to make sure  they are functionally equivalent.
@@ -326,21 +329,23 @@ Efabless has a family of SoCs striVe where there is openpdk,openeda,openrtl.
 -	OpenLANE is a flow conisiting of open source EDA tools like yosys , OpenSTA. Basic requirement for OpenLANE was to have complete RTL to GDS flow and avoid human intervention.
 -	Putting the RTL netlist and foundary pdks what we obtain from the flow is the GDSII file. OpenLANE is very similar to commercial EDA tool.
 -	In this workshop we are working on OpenLANE 
--	*PDKs:* Process design kit consists of all the information related to pdk. The pdk used in the workshop is skywater 130nm pdk. OpenLANE is built around this pdk. The pdk folder consists of the following files
+-	**PDKs:** Process design kit consists of all the information related to pdk. The pdk used in the workshop is skywater 130nm pdk. OpenLANE is built around this pdk. The pdk folder consists of the following files
 	 
 <p align="center"> 
    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/fed0d90c-5700-430f-aa03-18d0324ae6ab">	 
 	
 	
-	-	Skywater-pdk: has all pdk related files eg, timing libraries, lef files,tech lef,etc.
-	-	open_pdks:Silicon foundary files are made to work with the commercial EDA tools and not open source. Open_pdks help in mitigating the problem . There are sets of scripts and files that convert these foudnary level pdks to be compatible with open source tools.
-	-	sky130A:pdk which is made compatible to work with open source environment. It has libs.tech and libs.ref subdirectories.
-			1.	libs.ref: All process/ technology related files like timing , cell lef,tech lef , etc. We will be woking on the pdk variant – ***sky130_fd_sc_hd***.
-					-	*sky-process name   fd-foundary  sc-standard cell  hd-high density*
+	-  `Skywater-pdk`: has all pdk related files eg, timing libraries, lef files,tech lef,etc.
+	-  `open_pdks`:Silicon foundary files are made to work with the commercial EDA tools and not open source. Open_pdks help in mitigating the problem . There are sets of scripts and files that convert these foudnary level pdks to be compatible with open source tools.
+	-  `sky130A:pdk` which is made compatible to work with open source environment. It has libs.tech and libs.ref subdirectories.
+			1.	libs.ref: All process/ technology related files like timing , cell lef,tech lef , etc. We will be woking on the pdk variant – 
+***sky130_fd_sc_hd***.		
+	-	`sky-process name   fd-foundary  sc-standard cell  hd-high density`
+	
 <p align="center"> 
    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/9c1e4211-7dde-43b7-b8cc-72c57c098b09">		 
 	 	
-	 		2.	libs.tech: Files specific to tools. 
+	 		2.	`libs.tech`: Files specific to tools. 
  <p align="center"> 
    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/33dd1944-ccd1-4163-9816-dbfdc01f2e60">	 
  
@@ -349,16 +354,16 @@ Efabless has a family of SoCs striVe where there is openpdk,openeda,openrtl.
  #### Design preparation step
 
 -	Some of the commands in terminal prompt of linux:-
-	-	cd : change directory
-	-	ls : list of the contents inside a folder
-	-	ls –ltr : listing everything inside a folder in a chronological order
-	-	<command name> –-help: specifies about the command
-	-	./flow.tcl:  Specifies the flow has to go according to the script
-	-	–interactive: step by step process
-	-	package require openlane 0.9:import packages required to run the flow
-	-	cmds : all the commands that we have run.
-	-	cp : copy one folder into another directory.
-	-	vim : to make changes to any file in the terminal.
+	-	`cd` : change directory
+	-	`ls` : list of the contents inside a folder
+	-	`ls –ltr` : listing everything inside a folder in a chronological order
+	-	`<command name>:` –-help: specifies about the command
+	-	`./flow.tcl:`  Specifies the flow has to go according to the script
+	-	`–interactive:` step by step process
+	-	`package require openlane 0.9` :import packages required to run the flow
+	-	`cmds`: all the commands that we have run.
+	-	`cp` : copy one folder into another directory.
+	-	`vim` : to make changes to any file in the terminal.
 
 *We will be working in OpenLANE*
 
@@ -367,21 +372,21 @@ Efabless has a family of SoCs striVe where there is openpdk,openeda,openrtl.
 
 	
 
--	The designs required to run on the OpenLANE are been extracted from the designs directory under openlane. There are about 30-40 designs already built in openlane , here we can also built our design.	
+-	The designs required to run on the OpenLANE are been extracted from the designs directory under `openlane`. There are about 30-40 designs already built in openlane , here we can also built our design.	
 	
 <p align="center"> 
    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/4b6d663a-e620-40a1-8d2f-130f5f13d6b6">	
 
 
 - For this workshop will be doing **picorv32a**. The folder consists of following subdirectories.
-	-	src : source. RTL  and SDC information will be present here.
-	-	sky130A_sky130_fd_sc_hd_config.tcl : pdk specific config file.
-	-	config.tcl : Bypassess all the configuration that has already been done in openLANE . Many switches use default values that are already present in openLANE flow.
+	-   `src` : source. RTL  and SDC information will be present here.
+	-   `sky130A_sky130_fd_sc_hd_config.tcl` : pdk specific config file.
+	-    `config.tcl` : Bypassess all the configuration that has already been done in openLANE . Many switches use default values that are already present in openLANE flow.
 
 <p align="center"> 
    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/69901dd9-03da-4962-ba62-e2104ed3ff86">	
 	
-**less config.tcl**
+` **less config.tcl** `
 <p align="center"> 
    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/3d0ee9f8-bab5-417a-b742-ec5640601f96">	
 	
@@ -391,8 +396,8 @@ Efabless has a family of SoCs striVe where there is openpdk,openeda,openrtl.
 	2	config.tcl
 	1	sky130A_sky130_fd_sc_hd_config.tcl – highest precedence
 -	Before synthesis it is desirable to prepare the design setup that would set data structure for the design. It is necessary to set the file system specific to the flow
-	-	Command :**prep –design picorv32a**
-	-	*mergeLef.py* : merge the cell lef and tech lef files
+	-	Command :` **prep –design picorv32a** `
+	-	`mergeLef.py : merge the cell lef and tech lef files`
 
 <p align="center"> 
    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/e12bf36b-b263-4aab-bd97-77e96bada0ae">	
@@ -404,14 +409,14 @@ Efabless has a family of SoCs striVe where there is openpdk,openeda,openrtl.
 <p align="center"> 
    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/96008773-99c0-48a1-b0b3-1af4c5d63469">
 
-*merged.lef files:*
-1. **tech.lef**	
+` *merged.lef files:* `
+1. ` **tech.lef** ` 	
 	
 <p align="center"> 
    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/00727df0-8357-41cc-99b5-eb580a4ce940">
 
 	
-2. **cell.lef**
+2. ` **cell.lef** `
 	
 <p align="center"> 
    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/13436f9f-18bb-447f-bbeb-1e5b5660b714">
