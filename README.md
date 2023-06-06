@@ -358,6 +358,7 @@ Efabless has a family of SoCs striVe where there is openpdk,openeda,openrtl.
 	-	package require openlane 0.9:import packages required to run the flow
 	-	cmds : all the commands that we have run.
 	-	cp : copy one folder into another directory.
+	-	vim : to make changes to any file in the terminal.
 
 *We will be working in OpenLANE*
 
@@ -1181,7 +1182,7 @@ Solution was to bring *Delay tables*
  --- 
  #### Setup timing analysis and introduction to flip-flop setup time
  
-Setup Time Analysis:
+*Setup Time Analysis:*
 	
 -  One edge of the clock is sent to launch flop and the other is sent to the capture glop.
 -  The combinational delay should be less than the time period. If combinational delay is more the frequency reduces and the clock is shifted.
@@ -1255,9 +1256,31 @@ L1 and L2 are latency.
  --- 
  #### Setup and Hold Timing analysis
 	
+-  The clock tree has now buffers and wires.Now, the buffer delays are also added.
+-  The time period increses.
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/96d65967-45e6-416c-87f5-bb5dcb933ae8">
+
+*Data required time:* Complete circuitary needs a certain amount of time to function completely.
 	
+Data Arrival TIme < Data Required Time.
+
+**If Data Required < Data Arrival - Slack**
+
+
+*Hold Time Analysis:* 
+
+-  Combinational delay must be greater than the hold timing of capture flow.
+-  Hold time is the time required after the clock edge for for the Mux2 to give output based on the previos MUX's input. Or can be called as a time for steady for reliable sampling.
+
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/0abfba7a-81e3-49f9-a3f5-0a0b98d653c2">	
+
+
 	
-	
+
   --- 
  ### LAB : Timing modelling using delay tables
  --- 
@@ -1658,9 +1681,99 @@ read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
 set_propagated_clock (all_clocks)
 report_checks -path_delay min_max -format full_clock_expanded -digits 4
 	
-## Day 5:
+ ## Day 5:
+##RTL to GDSII
+  
+ --- 
+ ### Routing and design rule check
+ --- 
+ #### Introduction to maze routing
+	
+-  Routing is the best or the shortest possible path with less number of twist and turns between two points 	
+-  Routing tools are based on Lee's Algorithm. For more info on the algorithm, please refer here.	
+-  Two stages of Routing: Global and Detailed Routing.	
+	
+-  A typical maze route/
+<p align="center"> 
+	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/6ae967d8-a1a7-4351-ae61-75f2c6e0176f">		
+
 	
 	
+ #### Design Rule Check(DRC)
+
+-  The optical wavlength of the light is so small that minimun with of the wire should be very well taken of.
+ 
+<p align="center"> 
+	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/27063955-b45a-4e84-83a8-7e0d5a107fe1">	
+
+-  The minimum pitch between two wires is also a concern.
+	
+<p align="center"> 
+	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/327a2b50-17d7-491e-a863-b05427bfc8e6">	
+
+-  Minimum wire spacing.
+	
+	
+<p align="center"> 
+	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/136eb743-3af9-497c-a62a-45bbbc611132">		
+	
+-  When two nets are shorted. It is a violation of signal short type
+
+<p align="center"> 
+	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/593d942a-2118-4441-b64e-965e231cb10a">		
+	
+	
+-  Solution:Consider the two nets are of metal 2. One more layer will be introduced on top of it, which is metal 3. Upper metals are wider than lower metals.
+
+<p align="center"> 
+	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/94497183-efba-4e1d-ad31-9048e5c6e533">		
+
+- *Rule: Vis-width*- connect the bottom metal layer with the top metal layer. 	
+	
+
+-  Parasitic Extraction:  The wires have some resistance and capacitence must be extracted and be used. These are extracted in .spef format.
+	
+	
+	
+<p align="center"> 
+	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/ada5929b-2d44-4840-b80f-759c749abb47">		
+	
+
+--- 
+ ### Power distribution network
+ --- 
+ #### Power strap
+
+-  Below figure the green box is picorv32. the yellow , red and blue are i/o and power pads. red is the pwer pad and blue is the ground pad.
+-  Square ones on the corner are the conour pads.
+-  Power inside the chip comes inside through the pads and get supplied through the ring.
+<p align="center"> 
+	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/fcc5773c-19f9-499a-aba7-5a77b5a9274d">
+	
+
+#### Global and detailed routing
+	
+**Global Routing** : Fast route. Routing region is divided into rectangular grid cells. Output of this is a route guide.
+	
+**Detailed Routing** : Is is done by the triton route. Using algorithm the best possible connectivity is found.I	
+
+	
+**Triton Route:** 
+-  Performs initial detail route.
+-  Honors the preprocessed routing guides i.e, attempts as much as possible to route within route guides.
+-  Assumes route guides for each net satisfy inter-guide connectivity.
+-  Works on panel routing with intra layer parallel and inter layer sequential routing.
+	
+
+	
+*Requirements of Preprocessed guided*
+-  Should have unit width
+-  Should be in preferred direction.
+<p align="center"> 
+	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/1a653fb6-e679-4deb-ac43-2a798309feca">
+
+
+
  --- 
  ### LAB : Final Steps for RTL to GDSII using Tritonroute and open STA
  --- 
@@ -1710,3 +1823,22 @@ Finally do run_magic in the openlane to generate gds file.
 <p align="center"> 
 	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/54aeca0c-3884-4389-bcf7-572d3722b5ad">	
 
+-  At the end we give the command to run magic window.
+	
+run_magic
+	
+-   A GDSII file is generated
+
+<p align="center"> 
+	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/eff3b4e8-c9d2-4e52-bfc8-2b384c9adc4a">	
+	
+	
+	
+	
+	
+	
+
+##ACKNOWLEDGEMENTS
+	
+	
+	
