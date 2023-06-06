@@ -1220,6 +1220,8 @@ For eg: width
 - Extraction of .lef file
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/6b7e964e-83dc-4246-a935-bfc5480473bd">
+	
+	
 - Port enable checkbox creates a pin in .lef file
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/511256ca-e87d-4204-91ed-b11e94a31cfc">
@@ -1259,10 +1261,13 @@ For eg: width
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/ecf19161-e560-49f7-9494-951b8502a0e9">
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/ae882c7b-cdfa-4311-b480-34c9bcb8b806">
+	
 run_synthesis
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/ae882c7b-cdfa-4311-b480-34c9bcb8b806">
-- There is huge slack violation at synthesis stage
+	
+	
+-  There is huge slack violation at synthesis stage
 	
 #### Configure synthesis settings to fix slack and include vsdinv
 - There are huge delays observed. The report we get is from open STA.
@@ -1313,6 +1318,29 @@ run_synthesis
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/75911dd5-56eb-4089-8e89-6171d2133853">
 
-
-
+- There are huge delays observed. The report we get is from open STA.
 	
+	
+#### Configure openSTA for post-synthesis timing analysis
+
+-  Ensure slack is reduced.
+-  In any placement and route, if there are timing violations timing analysis are carried out seperately. Here , placement and route is an openLANE flow and hence, we will be carrying out our timing analysis on openSTA.
+	
+-   Inside openLANE folder a file is made for pre_sta.conf which sets the units and has all the library definations. Alongwith this , the verilog file is set here from where we have to read.
+-    Linking of design is done here.
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/073de62c-613e-4e0d-833a-00c4928968ae">
+	
+-   The src folder consists of the my_base.sdc file.
+-   In the typical file there are paratmers set our cell in_8. Modify the my_base.sdc file accordingly to tha parameters in typical.lib
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/a7f18864-34b5-4c5b-9441-3d3f31c364c6">
+
+
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/073de62c-613e-4e0d-833a-00c4928968ae">
+	
+	
+#### Optimize synthesis to reduce setup violations
