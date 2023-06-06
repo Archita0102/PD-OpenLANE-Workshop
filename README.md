@@ -1862,13 +1862,10 @@ Exctracting `SPEC` (SPEC extraction is done outside openlane as it does not have
 	
 Finally do run_magic in the openlane to generate gds file.
 	
--  `picorv32a.def.png` file generated after routing
-<p align="center"> 
-	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/54aeca0c-3884-4389-bcf7-572d3722b5ad">	
 
 -  At the end we give the command to run magic window.
 	
-run_magic
+`run_magic`
 	
 -   A `GDSII` file is generated
 
@@ -1881,9 +1878,9 @@ run_magic
 	
 	
 
-##Acknowledgement
+## Acknowledgement
 	
-	Further I would express my gratitude towards the entire VSD team for organizing and presenting the workshop. A big gratefullness to Kunal Ghosh and  Nickson Jose, VLSI Engineer for conducting such a well organzied,well designed and well planned workshop. This workshop taught me to build a whole RTL to GDSII design and gave more information about the design flow. It also made me familiar with the openSOURCE and openLANE tools and other open EDA tools.
+Further I would express my gratitude towards the entire VSD team for organizing and presenting the workshop. A big gratefullness to Kunal Ghosh and  Nickson Jose, VLSI Engineer for conducting such a well organzied,well designed and well planned workshop. This workshop taught me to build a whole RTL to GDSII design and gave more information about the design flow. It also made me familiar with the openSOURCE and openLANE tools and other open EDA tools.
 	
 	
 	
