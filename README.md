@@ -1509,12 +1509,15 @@ run_synthesis
 	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/13ec62be-9452-43bd-8f8c-5847220caac4">
 	
 
--   Run the cts again to see the timing modification.
+-   Run the cts to see the timing modification.
 	
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/c8767b33-f16e-4830-931f-c6deb342ddad">
+
+
+#### Observe impact of bigger CTS 
 	
--   The flow failed as we had to modify while running the cts for the second time as the def is CTS def is been included. But , we have to take the placement.def file.	
+-   The cts flow failed as we had to modify while running the cts for the second time as the def is CTS def is been included. But , we have to take the placement.def file.	
 -    Change the .def file.
 
 <p align="center"> 
@@ -1531,24 +1534,81 @@ run_synthesis
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/d96c453f-6329-4b34-98fe-8e64b3cd496e"> 
 
-
-
-
-    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/0a667173-4622-4c4b-8fdb-ac4edef6f801">
-#### Observe impact of bigger CTS 
+-   Setup slack time
+	
+<p align="center"> 
+    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/739f8b3f-40fa-46d2-8fda-be277fcf44a4">
+	
 	
 
+
+-  Hold slack time
 	
+<p align="center"> 
+	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/50027d4a-8d4b-4dba-a9af-ceba221ea646">
+
+
+-  Clock skew timings for setup and hold
+
+<p align="center"> 
+	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/062393fe-0cd0-4bba-a50f-506d6848d43c">
+
+-  Again if we want to add the buff_1 . Use the commant **linsert**
+	
+<p align="center"> 
+	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/2b0495f1-157e-4157-b7aa-e1e12543d43c">	
+
+ 
 	
 ## Day 5:
 	
 	
  --- 
- ### LAB : Power Distribution Network and Routing
+ ### LAB : Final Steps for RTL to GDSII using Tritonroute and open STA
  --- 
  #### Build Power Distribution Network
 	
+-  Invoke the docker again in the openLANE , include the design and prep the design.
+-  Check the def file created post the cts run.
+<p align="center"> 
+	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/c3a492f7-f61d-44c2-8979-8556e605709f">	
+
+-   Power distribution network : The power and the grounf trails.
+<p align="center"> 
+	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/1097a6ac-da9a-4579-8643-bd767c372bc8">		
+
+-   It reads the .lef,.def files and create straps for power. 
+-   Standard cells must have the power and ground lines.
+-   Pdn def file has both the cts def plus the power traps. 
+
+<p align="center"> 
+	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/9cea341b-e10c-4f48-8e35-43964729dda9">		
+
+-  Run the routing.
+
+ #### Final files post routing 
 	
- #### Power straps to standard cell power
+-  Inside the folder of routingthere are guide routes. We observe a fast routing guide which is glocal routing.
+
+<p align="center"> 
+	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/6765fe5c-9259-4c4f-9c69-490563491206">		
+
+-   There are all nets inside the folder and we see metal layers.
+<p align="center"> 
+	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/650bfe65-9736-4f10-b097-2360faede5e0">		
+
+Exctracting SPEC (SPEC extraction is done outside openlane as it does not have SPEC Extractor tool in openlane.
+
+-  picorv32a.def.png file generated after routing
 	
+<p align="center"> 
+	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/54aeca0c-3884-4389-bcf7-572d3722b5ad">	
+
+ #### Extraction of GDSII file 
 	
+Finally do run_magic in the openlane to generate gds file.
+	
+-  picorv32a.def.png file generated after routing
+<p align="center"> 
+	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/54aeca0c-3884-4389-bcf7-572d3722b5ad">	
+
