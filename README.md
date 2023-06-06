@@ -1138,8 +1138,8 @@ Fall Delay = 4.07574ns- 4.05016ns = 0.06385 ns
 
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/77b0e0a6-2a84-4337-8700-3681f5738af6">
-- The characterization done above was done at 27°C.
-- We have characterized our inverter. Next objective is to create a .lef file using the layout to be used in openlane and plug the cell into picorv32a code.
+-  The characterization done above was done at 27°C.
+-  We have characterized our inverter. Next objective is to create a .lef file using the layout to be used in openlane and plug the cell into picorv32a code.
 	
  ## Day 4:
 ## Pre-layout timing analysis and importance of good clock tree
@@ -1168,7 +1168,7 @@ Solution was to bring *Delay tables*
 #### Delay tables usage
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/65c0f21e-35a7-4ebc-8a7b-9c1cc426cd6c">
-- Fill up the value of input transistion , fill up the value of output load and get corresponding delay.
+-  Fill up the value of input transistion , fill up the value of output load and get corresponding delay.
 
 
 
@@ -1208,8 +1208,9 @@ Solution was to bring *Delay tables*
 For eg: width 
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/50861e29-e027-4e2a-9891-8a34325ab09e">
-- In layout there are no ports. Port defination are required only for extracting the .lef files. Ports are defined as pins of the .mag file.
-- Give the cell a custom name by 
+-  In layout there are no ports. Port defination are required only for extracting the .lef files. Ports are defined as pins of the .mag file.
+	
+-  Give the cell a custom name by 
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/cf851aa7-8c61-4fc0-96c8-a06f54ca9ccf">
 	
@@ -1233,14 +1234,21 @@ For eg: width
 - There are 3 lib files.
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/ec604473-3f01-46ab-8ccd-4b7139e6d7e0">
-	- Typical lib file (tt)
-	- Slow lib file (ss)
-	- Fast lib file (ff)
+	
+- Typical lib file (tt)
+- Slow lib file (ss)
+- Fast lib file (ff)
+	
+	
 	Defined for different temperature and different voltage values. We will require these libraries for STA analysis.
-- Copy the above libraries into src folder
+	
+	
+-  Copy the above libraries into src folder
+	
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/5ed74f1b-84ed-4aae-85e8-8270b39a046f">
 
+	
 - We need to modify the config.tcl inside designs folder.
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/f05cdcf9-504e-4020-ae05-ee8923645455">
