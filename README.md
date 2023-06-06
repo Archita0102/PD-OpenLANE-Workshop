@@ -68,13 +68,15 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
  - Figure 3 shows the chip internal circuit consisting of various components.
       
       
+```python
 	
       Pads: send signal inside the chip
       
       Core: digital logic is placed here
       
-      Die: size of the entire chip THAT GETS MANUFACTURED ON THE SILICON WAFER`
+      Die: size of the entire chip that gets manufactured
 	
+````
 	
 <p align="center"> 
    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/f8d33a05-00ce-46a8-87ae-a3085b0c70f0"> 
@@ -418,7 +420,9 @@ Efabless has a family of SoCs striVe where there is openpdk,openeda,openrtl.
 
 
 #### Steps to characterize synthesized results
--	*Calculation of flop ratio: No of d flip flops to the total number of cell*	
+-	```python
+	Calculation of flop ratio: No of d flip flops to the total number of cell
+	```
 	
 <p align="center"> 
    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/40cfbbeb-def1-416c-8eb0-4b992f286ce8">	
@@ -428,7 +432,9 @@ Efabless has a family of SoCs striVe where there is openpdk,openeda,openrtl.
    <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/cbc76488-68f8-4e95-a36e-d7f12e799c6d">	
 	
 
-**Flop count = 0.1084 = 10.84%**
+```python
+	Flop count = 0.1084 = 10.84%
+```
 -	Check the `results` and `reports` in the `runs` folder. Check under **synthesis**.
 
 <p align="center"> 
@@ -488,10 +494,12 @@ Placing all the logic cells inside the core . The logical cell occupies all the 
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/6f46e61b-1d07-4f9c-81fc-6a104763532c">
 
-*Utilization factor = Area occupied by netlist / Total Area of core*  = (4 x 1sq unit)/ (2sq unit x 2sq unit)=1=100% i.e extra cells cannot be added in this core.
+```python
+	Utilization factor = Area occupied by netlist / Total Area of core  = (4 x 1sq unit)/ (2sq unit x 2sq unit)=1=100% i.e extra cells cannot be added in this core.
 - Ideally the utilization factor is 50-60%
   
-*Aspect ratio= Height/Width* = 2unit/2unit = 1 signifies  chip is square . If other than 1 specifies chip is rectangular
+Aspect ratio= Height/Width = 2unit/2unit = 1 signifies  chip is square . If other than 1 specifies chip is rectangular
+```
 
  #### Concept of pre placed cells
   
@@ -805,9 +813,10 @@ c.	Noise characterization
 	
 
 	
-Die area(Area of whole die) : (lower left x value    lower left y value)(upper right x value    upper right y value)
+```python
+	Die area(Area of whole die) : (lower left x value    lower left y value)(upper right x value    upper right y value)
 Unit is set above (displayed in the image)  . Therefore , the database is unit/micron.
-
+```
 	
 
 	
@@ -1133,6 +1142,8 @@ Similarly other connections can also be checked.
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/cd0c20dd-7d53-46de-bb1d-15f288bff0ab">	
 
 - To zoom into a particular region in graph just make use of right ,ouse button and a box will be formes.
+	
+```python
 Rise Time [output transition time from 20%(0.66V) to 80%(2.64V)]:
 Rise Time = 2.25013ns - 2.18412ns = 0.06601ns ns
 
@@ -1144,6 +1155,8 @@ Rise Delay = 2.21566ns- 2.15181ns = 0.02554 ns
 	
 Fall Delay [delay between 50%(1.65V) of input to 50%(1.65V) of output]:
 Fall Delay = 4.07574ns- 4.05016ns = 0.06385 ns
+	
+```
 
 <p align="center"> 
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/77b0e0a6-2a84-4337-8700-3681f5738af6">
@@ -1418,11 +1431,13 @@ For eg: width
 
 
 - Here ,we encounter an issue with the flow hence , we run other commands for the floorplan stage
+```python
 	- init_floorplan
 	- place_io
 	- global_placement_or
 	- tap_decap_or
-
+```
+	
 -  Finally we give the `run_placement` command. Simultanoeously , we obtain a .def file under our placement folder inside the result.
 -  To view the layout give the command for magic tool.
 
@@ -1683,7 +1698,7 @@ For eg: width
 	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/2b0495f1-157e-4157-b7aa-e1e12543d43c">	
 
  - Commands for openROAD 
-	
+```python	
 openroad
 write_db pico_cts.db
 read_db pico_cts.db
@@ -1695,6 +1710,7 @@ link_design picorv32a
 read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
 set_propagated_clock (all_clocks)
 report_checks -path_delay min_max -format full_clock_expanded -digits 4
+```
 	
  ## Day 5:
 ## RTL to GDSII
