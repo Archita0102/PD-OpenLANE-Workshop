@@ -1870,11 +1870,14 @@ Finally do run_magic in the openlane to generate gds file.
 -   A `GDSII` file is generated
 
 <p align="center"> 
-	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/eff3b4e8-c9d2-4e52-bfc8-2b384c9adc4a">	
+	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/58a4c4fb-a609-4db6-9e52-8bf137eb9ca1">	
 	
+
+-  `picorv32a.gds.png` file generated after routing
+<p align="center"> 
+	 <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/1e81f7b2-cfcc-4c98-a074-3f5754bd47d8">	
 	
-	
-	
+
 	
 	
 
