@@ -6,26 +6,26 @@ A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop or
  * [Day 1: Inception of open-source EDA, OpenLANE and Sky130 PDK](#day-1) 
      + [How to talk to computers](#how-to-talk-to-computers) 
      + [SoC Design and OpenLANE](#soc-design-and-openlane) 
-     + [LAB:Get Familiar to open source EDA tools](#LAB-:-Get-familiar-to-open-source-EDA-tools) 
+     + [LAB1](#LAB1) 
  * [Day 2: Good Floorplan vs bad Floorplan and Introduction to Library Cells](#day-2) 
      + [Chip floor planning consideration](#Chip-floor-planning-consideration) 
      + [Library binding and placement](#Library-binding-and-placement) 
      + [Cell design and characterization flow](#Cell-design-and-characterization-flow) 
      + [General timing characterization parameters](#General-timing-characterization-parameters) 
-     + [LAB:Floorplan and PLacement steps](#LAB-:-Floorplan-and-PLacement-steps)       
+     + [LAB2](#LAB2)       
  * [Day 3 - Design library cell using Magic Layout and ngspice characterization](#day-3) 
      + [CMOS Inverter ngspice Simulation](#CMOS-Inverter-ngspice-simulation) 
-     + [LAB:Labs for CMOS inverter ngspice simulations](#LAB-:-Lab-for-CMOS-inverter-ngspice-simulations) 
+     + [LAB3](#LAB3) 
  * [Day 4 - Pre-layout timing analysis and importance of good clock tree](#day-4) 
      + [Timing modelling using delay tables](#Timing-modelling-using-delay-tables) 
      + [Timing analysis with ideal clocks using openSTA](#Timing-analysis-with-ideal-clocks-using-openSTA) 
      + [CLock tree synthesis using Triton-route and signal integrity](#CLock-tree-synthesis-using-Triton-route-and-signal-integrity) 
      + [Timing analysis with real clocks using openSTA](#Floorplanning-and-Placement) 
-     + [LAB:Timing modelling using delay tables](#LAB-:-Timing-modelling-using-delay-tables) 
+     + [LAB4](#LAB4) 
  * [DAY 5: RTL to GDSII](#Day-5) 
      + [Routing and design rule check](#Routing-and-design-rule-check) 
      + [Power Distribution Network](#Power-Distribution-Network) 
-     + [LAB:Final Steps for RTL to GDSII using Tritonroute and open STA](#LAB-:-Final-Steps-for-RTL-to-GDSII-using-Tritonroute-and-open-STA) 
+     + [LAB5](#LAB5) 
  * [Acknowledgement](#acknowledgement) 
  
   
@@ -309,8 +309,11 @@ Efabless has a family of SoCs striVe where there is openpdk,openeda,openrtl.
 
 
  --- 
- ### LAB:Get Familiar to open source EDA tools
+ ### LAB1
  --- 
+	 
+### Get familiar to open source EDA tools
+	 
  #### OpenLANE directory structure in detail
 	 
 -	OpenLANE is a flow conisiting of open source EDA tools like yosys , OpenSTA. Basic requirement for OpenLANE was to have complete RTL to GDS flow and avoid human intervention.
@@ -738,8 +741,10 @@ c.	Noise characterization
 - **Transistion time:** time(slew_high_rise_thr)-time(slew_low_rise_thr) or time(slew_high_fall_thr)-time(slew_low_fall_thr)
 
   --- 
- ### LAB:Floorplan and PLacement steps
+ ### LAB2
  --- 
+	 
+ ###  Floorplan and PLacement steps
  #### Steps to run floorplan using OpenLANE
 
  
@@ -1030,8 +1035,10 @@ All parameters related to the technology node are described here.
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/900b2877-9d2b-4d12-ad7a-dfba72ffa5bb"> 
 	
   --- 
- ### LAB:Labs for CMOS inverter ngspice simulations
+ ### LAB3
  --- 
+	
+###  Labs for CMOS inverter ngspice simulations
  #### IO placer revision
 - Here we will not be building the cell from scratch, we downloaded a mag file from the github link.
 - From ` .mag` file will be doing post layout simulation in ngspice and post characterizing the sample cell.
@@ -1306,8 +1313,10 @@ Data Arrival TIme < Data Required Time.
 	
 
   --- 
- ### LAB:Timing modelling using delay tables
+ ### LAB4
  --- 
+	
+###  Timing modelling using delay tables
  #### Convert grid info to track info
 
 - We dont require information of power , ground in place and route.
@@ -1807,8 +1816,10 @@ report_checks -path_delay min_max -format full_clock_expanded -digits 4
 
 
  --- 
- ### LAB:Final Steps for RTL to GDSII using Tritonroute and open STA
+ ### LAB5
  --- 
+	
+###  Final Steps for RTL to GDSII using Tritonroute and open STA
  #### Build Power Distribution Network
 	
 -  Invoke the `docker` again in the openLANE , include the `design` and prep the design.
