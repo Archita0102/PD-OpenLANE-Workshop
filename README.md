@@ -1,48 +1,33 @@
 # PD-OpenLANE-Workshop
-A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop organised by VSD  hands on performed by Archita Malgaonkar 
+A detailed summary of Advanced-Physical-Design-using-OpenLane-SKY130 workshop organised by VSD and hands on performed by Archita Malgaonkar 
 
 ## Table of Contents 
   
  * [Day 1: Inception of open-source EDA, OpenLANE and Sky130 PDK](#day-1) 
      + [How to talk to computers](#how-to-talk-to-computers) 
      + [SoC Design and OpenLANE](#soc-design-and-openlane) 
-     + [ASIC Design Flow](#ASIC-Design-Flow) 
-     + [Getting Familiar to EDA tools](#getting-familiar-to-eda-tools) 
-     + [Starting with OpenLANE and Synthesis](#starting-with-openLANE-and-synthesis) 
-     + [Run Logic Synthesis in OpenLANE](#Run-Logic-Synthesis-in-OpenLANE) 
+     + [LAB:Get Familiar to open source EDA tools](#LAB-:-Get-familiar-to-open-source-EDA-tools) 
  * [Day 2: Good Floorplan vs bad Floorplan and Introduction to Library Cells](#day-2) 
-     + [Stages of Floorplanning](#Stages-of-floorplanning) 
-     + [Steps to run and view floorplan using OpenLANE](#steps-to-run-and-view-floorplan-using-openlane) 
-     + [Placement in OpenLANE](#Placement-in-OpenLANE) 
-     + [Cell Design Flow](#Cell-Design-Flow) 
-     + [Characterization](#Characterization)  
+     + [Chip floor planning consideration](#Chip-floor-planning-consideration) 
+     + [Library binding and placement](#Library-binding-and-placement) 
+     + [Cell design and characterization flow](#Cell-design-and-characterization-flow) 
+     + [General timing characterization parameters](#General-timing-characterization-parameters) 
+     + [LAB:Floorplan and PLacement steps](#LAB-:-Floorplan-and-PLacement-steps)       
  * [Day 3 - Design library cell using Magic Layout and ngspice characterization](#day-3) 
-     + [Labs for CMOS inverter ngspice simulations](#Labs-for-CMOS-inverter-ngspice-simulations) 
-     + [CMOS Inverter Design using Magic](#CMOS-Inverter-Design-using-Magic) 
-     + [Characterizing the cell's(CMOS Inverter) slew rate and propagation delay](#Characterizing-the-cell's(CMOS-Inverter)-slew-rate-and-propagation-delay) 
+     + [CMOS Inverter ngspice Simulation](#CMOS-Inverter-ngspice-simulation) 
+     + [LAB:Labs for CMOS inverter ngspice simulations](#LAB-:-Lab-for-CMOS-inverter-ngspice-simulations) 
  * [Day 4 - Pre-layout timing analysis and importance of good clock tree](#day-4) 
-     + [Plug-in the Customized Inverter Cell(lif file) to OpenLane](#Plug-in-the-Customized-Inverter-Cell(lif-file)-to-OpenLane) 
-     + [Delay Table](#Delay-Table) 
-     + [Fix Negative Slack](Fix-Negative-Slack) 
-     + [Floorplanning and Placement](#Floorplanning-and-Placement) 
-     + [Pre-Layout Setup Timing Analysis](#Pre-Layout-Setup-Timing-Analysis) 
-     + [Pre-Clock Tree Synthesis using TritonCTS](#Pre-Clock-Tree-Synthesis-using-TritonCTS) 
-     + [Timing Analysis with Real Clocks](#Timing-Analysis-with-Real-Clocks) 
-     + [Multi-corner STA for Post-CTS](#Multi-corner-STA-for-Post-CTS) 
- * [DAY 5: Final Steps for RTL2GDS using TritonRoute and OpenSTA](#Day-5) 
-     + [Maze Routing](#Maze-Routing) 
-     + [DRC Cleaning](#DRC-Cleaning) 
-     + [Power Distribution Network (review)](#Power-Distribution-Network-(review)) 
-     + [Routing Stage and TritonRoute](#Routing-Stage-and-TritonRoute) 
-     + [Run PDN(Power Distribution Network)](#Run-PDN(Power-Distribution-Network)) 
-     + [Routing Stage](#Routing-Stage) 
-     + [Extraction of GRSII file](#Extraction-of-GRSII-file) 
- * [All commands to run in openlane](#All-commands-to-run-in-openlane) 
- * [Appendix](#Appendix) 
- * [References](#references) 
+     + [Timing modelling using delay tables](#Timing-modelling-using-delay-tables) 
+     + [Timing analysis with ideal clocks using openSTA](#Timing-analysis-with-ideal-clocks-using-openSTA) 
+     + [CLock tree synthesis using Triton-route and signal integrity](#CLock-tree-synthesis-using-Triton-route-and-signal-integrity) 
+     + [Timing analysis with real clocks using openSTA](#Floorplanning-and-Placement) 
+     + [LAB:Timing modelling using delay tables](#LAB-:-Timing-modelling-using-delay-tables) 
+ * [DAY 5: RTL to GDSII](#Day-5) 
+     + [Routing and design rule check](#Routing-and-design-rule-check) 
+     + [Power Distribution Network](#Power-Distribution-Network) 
+     + [LAB:Final Steps for RTL to GDSII using Tritonroute and open STA](#LAB-:-Final-Steps-for-RTL-to-GDSII-using-Tritonroute-and-open-STA) 
  * [Acknowledgement](#acknowledgement) 
- * [Accreditation](#Accreditation) 
- * [Inquiries](#inquiries) 
+ 
   
   
  ## Day 1: 
@@ -322,7 +307,7 @@ Efabless has a family of SoCs striVe where there is openpdk,openeda,openrtl.
 
 
  --- 
- ### LAB : Get Familiar to open source EDA tools
+ ### LAB:Get Familiar to open source EDA tools
  --- 
  #### OpenLANE directory structure in detail
 	 
@@ -745,7 +730,7 @@ c.	Noise characterization
 - **Transistion time:** time(slew_high_rise_thr)-time(slew_low_rise_thr) or time(slew_high_fall_thr)-time(slew_low_fall_thr)
 
   --- 
- ### LAB : Get Familiar to open source EDA tools
+ ### LAB:Floorplan and PLacement steps
  --- 
  #### Steps to run floorplan using OpenLANE
 
@@ -1036,7 +1021,7 @@ All parameters related to the technology node are described here.
     <img src="https://github.com/Archita0102/PD-OpenLANE-Workshop/assets/66164675/900b2877-9d2b-4d12-ad7a-dfba72ffa5bb"> 
 	
   --- 
- ### LAB : Labs for CMOS inverter ngspice simulations
+ ### LAB:Labs for CMOS inverter ngspice simulations
  --- 
  #### IO placer revision
 - Here we will not be building the cell from scratch, we downloaded a mag file from the github link.
@@ -1278,7 +1263,7 @@ L1 and L2 are latency.
 
 	
 --- 
- ### Timing analysis with ideal clocks using open STA
+ ### Timing analysis with real clocks using open STA
  --- 
  #### Setup and Hold Timing analysis
 	
@@ -1308,7 +1293,7 @@ Data Arrival TIme < Data Required Time.
 	
 
   --- 
- ### LAB : Timing modelling using delay tables
+ ### LAB:Timing modelling using delay tables
  --- 
  #### Convert grid info to track info
 
@@ -1806,7 +1791,7 @@ report_checks -path_delay min_max -format full_clock_expanded -digits 4
 
 
  --- 
- ### LAB : Final Steps for RTL to GDSII using Tritonroute and open STA
+ ### LAB:Final Steps for RTL to GDSII using Tritonroute and open STA
  --- 
  #### Build Power Distribution Network
 	
@@ -1869,7 +1854,9 @@ run_magic
 	
 	
 
-##ACKNOWLEDGEMENTS
+##Acknowledgement
+	
+	Further I would express my gratitude towards the entire VSD team for organizing and presenting the workshop. A big gratefullness to Kunal Ghosh and  Nickson Jose, VLSI Engineer for conducting such a well organzied,well designed and well planned workshop. This workshop taught me to build a whole RTL to GDSII design and gave more information about the design flow. It also made me familiar with the openSOURCE and openLANE tools and other open EDA tools.
 	
 	
 	
